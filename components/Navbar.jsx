@@ -7,7 +7,8 @@ export default function Navbar() {
   const { toggleSidebar } = useContext(AppContext)
 
   return (
-    <nav className='navigation h-[70px] w-full flex justify-between items-center p-[18px] md:p-[24px]'>
+    // sticky top-0 z-50 bg-white shadow-md
+    <nav className='navigation sticky top-0 z-50 bg-white shadow-md h-[70px] w-full flex justify-between items-center p-[18px] md:p-[24px]'>
       <Link href='/' className='logo-container text-2xl font-semibold'>
         Ecomm_App
       </Link>
