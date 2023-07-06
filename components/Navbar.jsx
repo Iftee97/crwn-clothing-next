@@ -11,7 +11,7 @@ export default function Navbar() {
       <Link href='/' className='logo-container text-2xl font-semibold'>
         Ecomm_App
       </Link>
-      <div className='nav-links-container h-full hidden md:flex items-center gap-4 font-medium'>
+      <div className='nav-links-container h-full hidden md:flex items-center gap-4 font-normal'>
         <Link href='/shop' className='nav-link cursor-pointer'>
           SHOP
         </Link>
@@ -27,7 +27,7 @@ export default function Navbar() {
         className='inline-block md:hidden cursor-pointer'
         onClick={toggleSidebar}
       >
-        <HiOutlineMenu className='text-2xl' />
+        <HiOutlineMenu className='text-2xl font-normal' />
       </button>
     </nav>
   )

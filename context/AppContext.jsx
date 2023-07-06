@@ -1,13 +1,11 @@
 import { useState, useEffect, createContext } from 'react'
-import { useRouter } from 'next/router'
 
 export const AppContext = createContext()
 
 export default function AppContextProvider({ children }) {
   const [showSidebar, setShowSidebar] = useState(false)
-  const router = useRouter()
 
-  const toggleSidebar = () => {
+  function toggleSidebar() {
     setShowSidebar(!showSidebar)
   }
 

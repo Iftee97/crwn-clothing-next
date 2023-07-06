@@ -27,7 +27,7 @@ export default function HiddenSidebar() {
             <HiOutlineX className='text-2xl' />
           </button>
         </div>
-        <div className='flex flex-col items-center justify-center gap-4 p-[18px] font-medium'>
+        <div className='flex flex-col items-center justify-center gap-4 p-[18px] font-normal'>
           <Link href='/shop' className='nav-link cursor-pointer'>
             SHOP
           </Link>
