@@ -25,7 +25,7 @@ export default async function handler(req, res) {
     console.log('user: >>>>>>>>', user)
     if (user) {
       const token = generateToken(user._id)
-      console.log('register token: >>>>>>>>', token)
+      console.log('sign up token: >>>>>>>>', token)
       return res.status(201).json({
         message: 'User created successfully',
         _id: user._id,
