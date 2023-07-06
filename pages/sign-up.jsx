@@ -1,13 +1,15 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { AuthContext } from '@/context/AuthContext'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
 
 export default function SignUp() {
+  const { setLoggedInUserName } = useContext(AuthContext)
   const router = useRouter()
   // const [signupError, setSignupError] = useState(null)
 
@@ -56,6 +58,7 @@ export default function SignUp() {
                 phone: data.phone,
                 token: data.token
               }))
+              setLoggedInUserName(data.username)
               Cookies.set('token', data.token)
               toast.success(data.message, { theme: 'dark' })
               router.push('/')
@@ -110,7 +113,7 @@ export default function SignUp() {
                 <Field
                   type="password"
                   name="password"
-                  className='border border-[#333] p-2 focus:outline-none rounded text-sm min-w-[300px]'
+                  className='border border-[#333] p-2 focus:outline-none rounded text-sm min-w-[300px] tracking-[0.1rem]'
                   placeholder='********'
                 />
                 <ErrorMessage
