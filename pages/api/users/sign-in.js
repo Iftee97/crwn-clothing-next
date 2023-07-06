@@ -23,8 +23,9 @@ export default async function handler(req, res) {
     return res.status(200).json({
       message: 'User logged in successfully',
       _id: user._id,
-      username: user.username,
       phone: user.phone,
+      username: user.username,
+      isAdmin: user.isAdmin,
       token,
     })
   } catch (error) {
