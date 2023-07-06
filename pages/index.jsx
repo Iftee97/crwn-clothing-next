@@ -9,7 +9,7 @@ export default function Home() {
 
       <main>
         <h1 className='text-4xl text-blue-500 text-center font-bold'>
-          Hello Ecomm App & Next 13 Pages Dir.
+          Hello Ecomm App
         </h1>
       </main>
     </>

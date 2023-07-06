@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import Link from 'next/link'
 import { AppContext } from '../context/AppContext'
-import { HiOutlineX } from 'react-icons/hi'
+import { HiOutlineX, HiOutlineShoppingBag } from 'react-icons/hi'
 
 export default function HiddenSidebar() {
   const { showSidebar, toggleSidebar } = useContext(AppContext)
@@ -16,7 +16,7 @@ export default function HiddenSidebar() {
       `}
     >
       <div className='block overflow-auto bg-[#fff] h-full'>
-        <div className='flex items-center justify-between px-8 py-4'>
+        <div className='flex items-center justify-between p-[18px]'>
           <Link href='/' className='text-2xl font-semibold'>
             Ecomm_App
           </Link>
@@ -27,13 +27,17 @@ export default function HiddenSidebar() {
             <HiOutlineX className='text-2xl' />
           </button>
         </div>
-        <div className='flex flex-col items-center justify-center gap-4 p-[18px]'>
+        <div className='flex flex-col items-center justify-center gap-4 p-[18px] font-medium'>
           <Link href='/shop' className='nav-link cursor-pointer'>
             SHOP
           </Link>
           <Link href='/sign-in' className='nav-link cursor-pointer'>
             SIGN IN
           </Link>
+          <button className='cart-icon cursor-pointer flex items-center gap-2'>
+            <HiOutlineShoppingBag className='text-2xl' />
+            <span>(0)</span>
+          </button>
         </div>
       </div>
     </div>
