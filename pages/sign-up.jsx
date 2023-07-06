@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useContext } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -11,7 +11,6 @@ import { toast } from 'react-toastify'
 export default function SignUp() {
   const { setLoggedInUserName } = useContext(AuthContext)
   const router = useRouter()
-  // const [signupError, setSignupError] = useState(null)
 
   return (
     <>
@@ -34,7 +33,7 @@ export default function SignUp() {
             if (!values.phone) {
               errors.phone = 'Phone number is required'
             } else if (values.phone.startsWith('+880') === false) {
-              errors.phone = 'Not a valid Bangladeshi phone number, must begin with +880'
+              errors.phone = 'Phone number must begin with +880'
             }
             if (!values.username) {
               errors.username = 'Username is required'
@@ -60,7 +59,7 @@ export default function SignUp() {
               }))
               setLoggedInUserName(data.username)
               Cookies.set('token', data.token)
-              toast.success(data.message, { theme: 'dark' })
+              toast.success(data.message)
               router.push('/')
             } catch (error) {
               console.log('error: >>>>>>>>>', error)
