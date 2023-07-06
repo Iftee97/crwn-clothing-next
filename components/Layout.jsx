@@ -1,10 +1,10 @@
 import React from 'react'
-import Navbar from './Navbar'
+import Header from './Header'
 
 export default function Layout({ children }) {
   return (
     <>
-      <Navbar />
+      <Header />
       <main className='max-w-[1440px] mx-auto px-16 py-10'>
         {children}
       </main>
