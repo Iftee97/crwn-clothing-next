@@ -67,7 +67,7 @@ export async function getServerSideProps(ctx) {
   const { req, res } = ctx
   const { isAdmin } = req.cookies
 
-  if (!isAdmin) {
+  if (isAdmin !== 'true') {
     return {
       redirect: {
         destination: '/',
