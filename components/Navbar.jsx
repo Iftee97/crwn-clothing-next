@@ -39,7 +39,7 @@ export default function Navbar() {
         {loggedInUserName && (
           <div className='relative'>
             <span
-              className='text-sm bg-blue-200 py-1 px-2 rounded cursor-pointer inline-block'
+              className='bg-blue-200 py-1 px-2 rounded cursor-pointer inline-block'
               onClick={() => setShowPopover(!showPopover)}
             >
               {loggedInUserName}
