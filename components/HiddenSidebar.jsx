@@ -17,7 +17,11 @@ export default function HiddenSidebar() {
     >
       <div className='block overflow-auto bg-[#fff] h-full'>
         <div className='flex items-center justify-between p-[18px]'>
-          <Link href='/' className='text-2xl font-semibold'>
+          <Link
+            href='/'
+            className='text-2xl font-semibold'
+            onClick={toggleSidebar}
+          >
             Ecomm_App
           </Link>
           <button
@@ -28,10 +32,18 @@ export default function HiddenSidebar() {
           </button>
         </div>
         <div className='flex flex-col items-center justify-center gap-4 p-[18px] font-normal'>
-          <Link href='/shop' className='nav-link cursor-pointer'>
+          <Link
+            href='/shop'
+            className='nav-link cursor-pointer'
+            onClick={toggleSidebar}
+          >
             SHOP
           </Link>
-          <Link href='/sign-in' className='nav-link cursor-pointer'>
+          <Link
+            href='/sign-in'
+            className='nav-link cursor-pointer'
+            onClick={toggleSidebar}
+          >
             SIGN IN
           </Link>
           <button className='cart-icon cursor-pointer flex items-center gap-2'>

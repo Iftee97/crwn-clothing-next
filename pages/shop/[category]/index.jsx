@@ -35,8 +35,8 @@ export default function Category() {
       </h2>
       <div className='category-container grid grid-cols-1 lg:grid-cols-4 gap-x-[0] lg:gap-x-[20px]'>
         {products?.map((product) => (
-          <div key={product.id} className='mb-[36px]'>
-            <ProductCard product={product} />
+          <div key={product.id} className='mb-[24px]'>
+            <ProductCard categoryTitle={category} product={product} />
           </div>
         ))}
       </div>

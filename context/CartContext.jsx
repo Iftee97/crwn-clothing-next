@@ -3,17 +3,17 @@ import { useLocalStorage } from '@/hooks/useLocalStorage'
 
 export const CartContext = createContext()
 
-export function CartContextProvider({ children }) {
+export default function CartContextProvider({ children }) {
   const [isCartOpen, setIsCartOpen] = useState(false)
   // const [cartItems, setCartItems] = useState([]) // without persisting to localStorage
   const [cartItems, setCartItems] = useLocalStorage('cartItems', []) // with persisting to localStorage under the key 'cartItems' with an initial value of []
 
-  function addItemToCart(productToAdd) {
+  function addItemToCart(productToAdd, qty) {
     const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToAdd.id)
     if (existingCartItem) {
       increaseQuantity(productToAdd)
     } else {
-      setCartItems([...cartItems, { ...productToAdd, quantity: 1 }])
+      setCartItems([...cartItems, { ...productToAdd, quantity: qty }])
     }
   }
 

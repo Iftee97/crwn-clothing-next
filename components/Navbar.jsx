@@ -1,14 +1,26 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { AppContext } from '../context/AppContext'
 import { AuthContext } from '@/context/AuthContext'
+import { CartContext } from '@/context/CartContext'
 import { HiOutlineMenu, HiOutlineShoppingBag } from 'react-icons/hi'
 import Cookies from 'js-cookie'
 
 export default function Navbar() {
   const { toggleSidebar } = useContext(AppContext)
   const { loggedInUserName } = useContext(AuthContext)
+  const { getCartItemsCount } = useContext(CartContext)
   const [showPopover, setShowPopover] = useState(false)
+  const [cartCount, setCartCount] = useState(0)
+
+  // const count = getCartItemsCount()
+
+  useEffect(() => {
+    setCartCount(getCartItemsCount())
+  }, [
+    getCartItemsCount,
+    cartCount,
+  ])
 
   return (
     <nav className='navigation bg-white shadow-md h-[70px] w-full flex justify-between items-center p-[18px] md:p-[24px]'>
@@ -24,7 +36,7 @@ export default function Navbar() {
             >
               {loggedInUserName}
             </span>
-            {showPopover && <UserDropDown loggedInUserName={loggedInUserName} />}
+            {showPopover && <UserDropDown />}
           </div>
         )}
         <Link href='/shop' className='nav-link cursor-pointer'>
@@ -37,7 +49,7 @@ export default function Navbar() {
         )}
         <button className='cart-icon cursor-pointer flex items-center gap-2'>
           <HiOutlineShoppingBag className='text-2xl' />
-          <span>(0)</span>
+          <span>({cartCount})</span>
         </button>
       </div>
       <button
@@ -50,7 +62,7 @@ export default function Navbar() {
   )
 }
 
-function UserDropDown({ loggedInUserName }) {
+function UserDropDown() {
   const { setLoggedInUserName } = useContext(AuthContext)
 
   function handleSignOut() {

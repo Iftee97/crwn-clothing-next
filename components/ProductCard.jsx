@@ -5,7 +5,7 @@ export default function ProductCard({ categoryTitle, product }) {
 
   return (
     <Link href={`/shop/${categoryTitle}/${name}`}>
-      <div className='product-card-container w-full flex flex-col items-center h-[350px] relative mb-[28px] lg:mb-0'>
+      <div className='product-card-container w-full flex flex-col items-center h-[350px] relative mb-[28px]'>
         <img
           src={imageUrl}
           alt={name}

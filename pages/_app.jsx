@@ -1,6 +1,7 @@
 import Layout from '@/components/Layout'
 import AppContextProvider from '@/context/AppContext'
 import AuthContextProvider from '@/context/AuthContext'
+import CartContextProvider from '@/context/CartContext'
 import { Montserrat } from 'next/font/google'
 import { ToastContainer } from 'react-toastify'
 import '@/styles/globals.css'
@@ -23,10 +24,12 @@ export default function App({ Component, pageProps }) {
 
       <AppContextProvider>
         <AuthContextProvider>
-          <Layout>
-            <Component {...pageProps} />
-            <ToastContainer theme='dark' />
-          </Layout>
+          <CartContextProvider>
+            <Layout>
+              <Component {...pageProps} />
+              <ToastContainer theme='dark' />
+            </Layout>
+          </CartContextProvider>
         </AuthContextProvider>
       </AppContextProvider>
     </>
