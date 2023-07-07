@@ -1,33 +1,29 @@
-import { useContext, useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useContext, useState, useEffect } from 'react'
 import { AppContext } from '../context/AppContext'
 import { AuthContext } from '@/context/AuthContext'
 import { CartContext } from '@/context/CartContext'
 import { HiOutlineMenu, HiOutlineShoppingBag } from 'react-icons/hi'
 import Cookies from 'js-cookie'
+import SlidingCart from './SlidingCart'
 
 export default function Navbar() {
   const { toggleSidebar } = useContext(AppContext)
   const { loggedInUserName } = useContext(AuthContext)
-  const { getCartItemsCount } = useContext(CartContext)
+  const { getCartItemsCount, isCartOpen, setIsCartOpen } = useContext(CartContext)
   const [showPopover, setShowPopover] = useState(false)
   const [cartCount, setCartCount] = useState(0)
 
-  // const count = getCartItemsCount()
-
   useEffect(() => {
     setCartCount(getCartItemsCount())
-  }, [
-    getCartItemsCount,
-    cartCount,
-  ])
+  }, [getCartItemsCount, cartCount])
 
   return (
-    <nav className='navigation bg-white shadow-md h-[70px] w-full flex justify-between items-center p-[18px] md:p-[24px]'>
+    <nav className='navigation sticky top-0 z-20 bg-white shadow-md h-[70px] w-full flex justify-between items-center p-[18px] md:p-[24px]'>
       <Link href='/' className='logo-container text-2xl font-semibold'>
         Ecomm_App
       </Link>
-      <div className='nav-links-container h-full hidden md:flex items-center gap-4 font-normal'>
+      <div className='nav-links-container h-full hidden md:flex items-center gap-6 font-normal'>
         {loggedInUserName && (
           <div className='relative'>
             <span
@@ -47,10 +43,14 @@ export default function Navbar() {
             SIGN IN
           </Link>
         )}
-        <button className='cart-icon cursor-pointer flex items-center gap-2'>
+        <button
+          className='cart-icon cursor-pointer flex items-center gap-2 hover:bg-green-200 py-1 px-2 rounded'
+          onClick={() => setIsCartOpen(!isCartOpen)}
+        >
           <HiOutlineShoppingBag className='text-2xl' />
           <span>({cartCount})</span>
         </button>
+        <SlidingCart />
       </div>
       <button
         className='inline-block md:hidden cursor-pointer'
@@ -58,7 +58,7 @@ export default function Navbar() {
       >
         <HiOutlineMenu className='text-2xl font-normal' />
       </button>
-    </nav>
+    </nav >
   )
 }
 
