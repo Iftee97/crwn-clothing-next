@@ -27,7 +27,7 @@ export default function OrderItem({ order }) {
         ))}
         <div>
           Total: {' '}
-          <span className='text-blue-700'>
+          <span className='text-blue-700 font-medium'>
             ${order.total}
           </span>
         </div>
