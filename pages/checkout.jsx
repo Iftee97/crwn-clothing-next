@@ -40,7 +40,7 @@ export default function Checkout() {
       console.log('res: >>>>>>>>', res)
       toast.success('Order placed successfully!')
       clearCart()
-      router.push('/')
+      router.push('/my-orders')
     } catch (error) {
       console.log('error: >>>>>>>>', error)
       setCheckoutError(error)

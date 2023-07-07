@@ -1,6 +1,7 @@
+import Head from 'next/head'
 import { useEffect, useState, useContext } from 'react'
 import { AuthContext } from '@/context/AuthContext'
-import Head from 'next/head'
+import OrderItem from '@/components/OrderItem'
 import axios from 'axios'
 
 export default function MyOrders() {
@@ -26,7 +27,22 @@ export default function MyOrders() {
     }
   }
 
-  console.log('orders: >>>>>>>>', orders)
+  let content = null
+  if (ordersLoading) {
+    content = <h2 className='flex items-center justify-center'>
+      Loading...
+    </h2>
+  }
+  if (!ordersLoading && orders.length === 0) {
+    content = <h2 className='flex items-center justify-center'>
+      You have no orders
+    </h2>
+  }
+  if (!ordersLoading && orders.length > 0) {
+    content = orders.map(order => (
+      <OrderItem key={order._id} order={order} />
+    ))
+  }
 
   return (
     <>
@@ -34,9 +50,14 @@ export default function MyOrders() {
         <title>My Orders | Crwn Clothing</title>
       </Head>
 
-      {ordersLoading ? 'loading...' : (
-        <div>MyOrders</div>
-      )}
+      <div className='flex flex-col items-center justify-center'>
+        <h1 className='text-2xl font-bold mb-6'>
+          My Orders
+        </h1>
+        <div className='flex flex-col items-center justify-center gap-4'>
+          {content}
+        </div>
+      </div>
     </>
   )
 }
