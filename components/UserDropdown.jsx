@@ -5,7 +5,7 @@ import { AuthContext } from '@/context/AuthContext'
 import Cookies from 'js-cookie'
 
 export default function UserDropDown() {
-  const { showSidebar, toggleSidebar } = useContext(AppContext)
+  const { toggleSidebar } = useContext(AppContext)
   const { setLoggedInUserName, isAdminUser } = useContext(AuthContext)
 
   function handleSignOut() {
@@ -20,22 +20,22 @@ export default function UserDropDown() {
         {isAdminUser && (
           <>
             <Link
-              href='/all-orders'
-              className='text-sm hover:underline'
-              onClick={toggleSidebar}
-            >
-              All orders
-            </Link>
-            <Link
               href='/all-users'
               className='text-sm hover:underline'
               onClick={toggleSidebar}
             >
               Users List
             </Link>
+            <Link
+              href='/all-orders'
+              className='text-sm hover:underline'
+              onClick={toggleSidebar}
+            >
+              All orders
+            </Link>
           </>
         )}
-        <Link href='/orders' className='text-sm hover:underline'>
+        <Link href='/my-orders' className='text-sm hover:underline'>
           My orders
         </Link>
         <button
