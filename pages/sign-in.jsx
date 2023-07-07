@@ -54,6 +54,7 @@ export default function SignIn() {
               }))
               setLoggedInUserName(data.username)
               Cookies.set('token', data.token)
+              Cookies.set('isAdmin', data.isAdmin)
               toast.success(data.message)
               router.push('/')
             } catch (error) {
@@ -122,4 +123,25 @@ export default function SignIn() {
       </div>
     </>
   )
+}
+
+// route guard - if user is logged in, redirect to home page
+export async function getServerSideProps(ctx) {
+  const { req, res } = ctx
+  const { token } = req.cookies
+
+  if (token) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
+
+  return {
+    props: {
+      // 
+    }
+  }
 }

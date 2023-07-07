@@ -11,3 +11,24 @@ export default function MyOrders() {
     </>
   )
 }
+
+// route guard - if user is not logged in, redirect to home page
+export async function getServerSideProps(ctx) {
+  const { req, res } = ctx
+  const { token } = req.cookies
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
+
+  return {
+    props: {
+      // 
+    }
+  }
+}

@@ -14,6 +14,7 @@ export default function AuthContextProvider({ children }) {
     }
     if (loggedInUserData && loggedInUserData.token) {
       Cookies.set('token', loggedInUserData.token)
+      Cookies.set('isAdmin', loggedInUserData.isAdmin)
     }
     if (loggedInUserData && loggedInUserData.isAdmin) {
       setIsAdminUser(true)

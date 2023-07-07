@@ -60,6 +60,7 @@ export default function SignUp() {
               }))
               setLoggedInUserName(data.username)
               Cookies.set('token', data.token)
+              Cookies.set('isAdmin', data.isAdmin)
               toast.success(data.message)
               router.push('/')
             } catch (error) {
