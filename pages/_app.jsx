@@ -27,7 +27,7 @@ export default function App({ Component, pageProps }) {
           <CartContextProvider>
             <Layout>
               <Component {...pageProps} />
-              <ToastContainer position='bottom-right' theme='dark' />
+              <ToastContainer position='bottom-center' theme='dark' />
             </Layout>
           </CartContextProvider>
         </AuthContextProvider>
