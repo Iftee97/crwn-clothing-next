@@ -81,7 +81,7 @@ export default function SingleProduct() {
                 </div>
               </div>
               <button
-                className='bg-zinc-900 hover:bg-zinc-950 text-white mt-4 py-2 px-4 rounded inline-block'
+                className='bg-black hover:bg-gray-800 text-white mt-4 py-2 px-4 rounded'
                 onClick={() => addItemToCart(product, qty)}
               >
                 Add to cart

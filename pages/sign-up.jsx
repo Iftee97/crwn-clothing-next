@@ -125,7 +125,7 @@ export default function SignUp() {
                 type="submit"
                 disabled={isSubmitting}
                 className={`
-                  bg-zinc-900 hover:bg-zinc-950 text-white py-2 px-4 rounded 
+                  bg-black hover:bg-gray-800 text-white py-2 px-4 rounded 
                   ${isSubmitting && 'cursor-not-allowed opacity-50'}
                 `}
               >

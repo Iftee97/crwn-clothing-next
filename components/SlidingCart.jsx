@@ -146,16 +146,16 @@ export default function SlidingCart() {
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <p>Subtotal</p>
                         <p>
-                          {getCartTotal().toLocaleString()}
+                          ${getCartTotal().toLocaleString()}
                         </p>
                       </div>
-                      {/* <p className="mt-0.5 text-sm text-gray-500">
+                      <p className="mt-0.5 text-sm text-gray-500">
                         Shipping and taxes calculated at checkout.
-                      </p> */}
+                      </p>
                       <div className="mt-6">
                         <Link
                           href='/checkout'
-                          className="flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-black border border-transparent rounded-md shadow-sm hover:bg-gray-800 cursor-pointer"
+                          className="flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-black hover:bg-gray-800 border border-transparent rounded-md shadow-sm cursor-pointer"
                         >
                           Checkout
                         </Link>

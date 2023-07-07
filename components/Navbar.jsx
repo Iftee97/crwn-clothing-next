@@ -44,7 +44,7 @@ export default function Navbar() {
           </Link>
         )}
         <button
-          className='cart-icon cursor-pointer flex items-center gap-2 hover:bg-green-200 py-1 px-2 rounded'
+          className='cart-icon cursor-pointer flex items-center gap-2 hover:bg-gray-800 hover:text-white py-1 px-2 rounded'
           onClick={() => setIsCartOpen(!isCartOpen)}
         >
           <HiOutlineShoppingBag className='text-2xl' />
@@ -58,7 +58,7 @@ export default function Navbar() {
       >
         <HiOutlineMenu className='text-2xl font-normal' />
       </button>
-    </nav >
+    </nav>
   )
 }
 
