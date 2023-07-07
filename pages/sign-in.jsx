@@ -66,7 +66,7 @@ export default function SignIn() {
           }}
         >
           {({ isSubmitting }) => (
-            <Form className='flex flex-col items-center justify-center gap-3 mb-6'>
+            <Form className='flex flex-col items-center justify-center text-lg gap-3 mb-6'>
               <div className='form-group mb-2'>
                 <label htmlFor="phone" className='block'>
                   Phone
@@ -74,7 +74,7 @@ export default function SignIn() {
                 <Field
                   type="string"
                   name="phone"
-                  className='border border-[#333] p-2 focus:outline-none rounded text-sm min-w-[300px]'
+                  className='border border-[#333] p-2 focus:outline-none rounded text-base min-w-[300px] tracking-[0.1rem]'
                   placeholder='+8801711234567'
                 />
                 <ErrorMessage
@@ -90,8 +90,8 @@ export default function SignIn() {
                 <Field
                   type="password"
                   name="password"
-                  className='border border-[#333] p-2 focus:outline-none rounded text-sm min-w-[300px] tracking-[0.1rem]'
-                  placeholder='********'
+                  className='border border-[#333] p-2 focus:outline-none rounded text-base min-w-[300px] tracking-[0.1rem]'
+                  placeholder='supersecret'
                 />
                 <ErrorMessage
                   name="password"
