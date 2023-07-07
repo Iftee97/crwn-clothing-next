@@ -35,7 +35,7 @@ export default function SingleProduct() {
   }
 
   function decreaseQty() {
-    if (count === 1) return
+    if (qty === 1) return
     setQty(qty - 1)
     decreaseQuantity(product)
   }
