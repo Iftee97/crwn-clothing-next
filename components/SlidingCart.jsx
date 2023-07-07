@@ -145,7 +145,7 @@ export default function SlidingCart() {
                       <p className="mt-0.5 text-sm text-gray-500">
                         Shipping and taxes calculated at checkout.
                       </p>
-                      <div className="mt-6">
+                      <div className="mt-6" onClick={() => setIsCartOpen(false)}>
                         <Link
                           href='/checkout'
                           className="flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-black hover:bg-gray-800 border border-transparent rounded-md shadow-sm cursor-pointer"
