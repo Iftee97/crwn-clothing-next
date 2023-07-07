@@ -1,18 +1,21 @@
 import React from 'react'
 
 export default function OrderItem({ order }) {
-  console.log('order: >>>>>>>>', order)
-
   return (
-    <div className='border border-gray-300 p-4 rounded flex flex-col items-center w-full'>
-      <h2 className='text-xl font-semibold mb-6'>
+    <div className='border border-gray-300 p-4 rounded flex flex-col items-start w-full'>
+      <h2 className='text-2xl font-semibold mb-3'>
         Order ID: {order._id}
       </h2>
-      <div className='flex flex-col items-center gap-4 w-full'>
+      {order.user._id && (
+        <h3 className='text-xl mb-6 font-semibold'>
+          User ID: {order.user._id}
+        </h3>
+      )}
+      <div className='flex flex-col items-center gap-4 w-full text-lg'>
         {order.items.map((item) => (
           <div
             key={item.id}
-            className='flex items-center justify-between w-full text-lg'
+            className='flex items-center justify-between w-full'
           >
             <span className='font-medium'>
               {item.name}
@@ -22,6 +25,12 @@ export default function OrderItem({ order }) {
             </span>
           </div>
         ))}
+        <div>
+          Total: {' '}
+          <span className='text-blue-700'>
+            ${order.total}
+          </span>
+        </div>
       </div>
     </div>
   )

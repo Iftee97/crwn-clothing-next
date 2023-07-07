@@ -6,10 +6,6 @@ const OrderSchema = new Schema({
     ref: 'User',
     required: true,
   },
-  // shippingAddress: {
-  //   type: String,
-  //   required: true,
-  // },
   items: {
     type: Array,
     required: true,
@@ -18,17 +14,6 @@ const OrderSchema = new Schema({
     type: Number,
     required: true,
   },
-  isPaid: {
-    type: Boolean,
-    default: false,
-  },
-  isDelivered: {
-    type: Boolean,
-    default: false,
-  },
-  deliveredAt: {
-    type: Date,
-  }
 }, {
   timestamps: true,
 })
