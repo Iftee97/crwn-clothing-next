@@ -5,6 +5,7 @@ import { AppContext } from '../context/AppContext'
 import { AuthContext } from '@/context/AuthContext'
 import { HiOutlineX } from 'react-icons/hi'
 import UserDropdown from './UserDropdown'
+import Cookies from 'js-cookie'
 
 export default function HiddenSidebar() {
   const { showSidebar, toggleSidebar, showUserDropdown, setShowUserDropdown } = useContext(AppContext)
