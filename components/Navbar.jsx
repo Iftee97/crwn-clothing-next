@@ -9,10 +9,9 @@ import SlidingCart from './SlidingCart'
 import UserDropdown from './UserDropdown'
 
 export default function Navbar() {
-  const { toggleSidebar } = useContext(AppContext)
+  const { toggleSidebar, showUserDropdown, setShowUserDropdown } = useContext(AppContext)
   const { loggedInUserName, isAdminUser } = useContext(AuthContext)
   const { getCartItemsCount, isCartOpen, setIsCartOpen } = useContext(CartContext)
-  const [showPopover, setShowPopover] = useState(false)
   const [cartCount, setCartCount] = useState(0)
 
   // to avoid weird hydration mismatch error
@@ -40,12 +39,12 @@ export default function Navbar() {
           <div className='relative'>
             <span
               className='bg-blue-200 py-1 px-2 rounded cursor-pointer inline-block'
-              onClick={() => setShowPopover(!showPopover)}
+              onClick={() => setShowUserDropdown(!showUserDropdown)}
             >
               {loggedInUserName} {' '}
               {isAdminUser && <span>(admin)</span>}
             </span>
-            {showPopover && <UserDropdown />}
+            {showUserDropdown && <UserDropdown />}
           </div>
         )}
         <Link href='/shop' className='nav-link cursor-pointer'>

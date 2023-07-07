@@ -33,7 +33,7 @@ export default function Category() {
       <h2 className='category-title text-[36px] mb-[24px] text-center'>
         {category?.toUpperCase()}
       </h2>
-      <div className='category-container grid grid-cols-1 lg:grid-cols-4 gap-x-[0] lg:gap-x-[20px]'>
+      <div className='category-container grid grid-cols-1 sm:grid-cols-2 sm:gap-x-[16px] lg:grid-cols-4 gap-x-[0] lg:gap-x-[20px]'>
         {products?.map((product) => (
           <div key={product.id} className='mb-[24px]'>
             <ProductCard categoryTitle={category} product={product} />

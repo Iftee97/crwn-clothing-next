@@ -37,7 +37,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <div className='category-container w-full block lg:flex flex-wrap justify-between'>
+        <div className='category-container w-full grid grid-cols-1 gap-4 md:grid-cols-2 lg:flex lg:gap-0 flex-wrap justify-between'>
           {categories.map((category) => (
             <CategoryItem key={category.id} category={category} />
           ))}
