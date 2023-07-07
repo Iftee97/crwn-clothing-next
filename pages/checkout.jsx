@@ -46,7 +46,9 @@ export default function Checkout() {
             <span className='total mt-[30px] ml-auto text-[32px]'>
               Total: ${cartTotal.toLocaleString()}
             </span>
-            <button className='bg-black hover:bg-gray-800 text-white mt-4 py-2 px-4 rounded'>
+            <button
+              className='bg-black hover:bg-gray-800 text-white mt-4 py-2 px-4 rounded'
+            >
               Checkout
             </button>
           </>

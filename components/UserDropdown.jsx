@@ -12,6 +12,7 @@ export default function UserDropdown() {
     setLoggedInUserName('')
     localStorage.removeItem('loggedInUserData')
     Cookies.remove('token')
+    Cookies.remove('isAdmin')
   }
 
   function dontShowSidebar() {

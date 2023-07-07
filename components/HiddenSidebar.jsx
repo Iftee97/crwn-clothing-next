@@ -1,22 +1,14 @@
-import { useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { AppContext } from '../context/AppContext'
 import { AuthContext } from '@/context/AuthContext'
 import { HiOutlineX } from 'react-icons/hi'
 import UserDropdown from './UserDropdown'
-import Cookies from 'js-cookie'
 
 export default function HiddenSidebar() {
   const { showSidebar, toggleSidebar, showUserDropdown, setShowUserDropdown } = useContext(AppContext)
-  const { loggedInUserName, isAdminUser, setIsAdminUser } = useContext(AuthContext)
-
-  useEffect(() => {
-    const isAdmin = Cookies.get('isAdmin')
-    if (isAdmin) {
-      setIsAdminUser(true)
-    }
-  }, [setIsAdminUser, isAdminUser])
+  const { loggedInUserName, isAdminUser } = useContext(AuthContext)
 
   return (
     <div

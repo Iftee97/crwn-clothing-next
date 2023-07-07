@@ -21,6 +21,13 @@ export default function AuthContextProvider({ children }) {
     }
   }, [setLoggedInUserName, setIsAdminUser, isAdminUser])
 
+  useEffect(() => {
+    const isAdmin = Cookies.get('isAdmin')
+    if (isAdmin === 'true') {
+      setIsAdminUser(true)
+    }
+  }, [Cookies.get('isAdmin'), setIsAdminUser])
+
   return (
     <AuthContext.Provider
       value={{
