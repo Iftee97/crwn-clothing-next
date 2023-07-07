@@ -10,9 +10,11 @@ import UserDropdown from './UserDropdown'
 
 export default function Navbar() {
   const { toggleSidebar, showUserDropdown, setShowUserDropdown } = useContext(AppContext)
-  const { loggedInUserName, isAdminUser } = useContext(AuthContext)
+  const { loggedInUserName, user } = useContext(AuthContext)
   const { getCartItemsCount, isCartOpen, setIsCartOpen } = useContext(CartContext)
   const [cartCount, setCartCount] = useState(0)
+
+  console.log('user: >>>>>>>>', user)
 
   // to avoid weird hydration mismatch error
   useEffect(() => {
@@ -41,8 +43,8 @@ export default function Navbar() {
               className='bg-blue-200 py-1 px-2 rounded cursor-pointer inline-block'
               onClick={() => setShowUserDropdown(!showUserDropdown)}
             >
-              {loggedInUserName} {' '}
-              {isAdminUser && <span>(admin)</span>}
+              {user.username} {' '}
+              {user.isAdmin && <span>(admin)</span>}
             </span>
             {showUserDropdown && <UserDropdown />}
           </div>

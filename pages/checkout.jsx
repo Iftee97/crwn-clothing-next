@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useState, useEffect, useContext } from 'react'
 import { CartContext } from '@/context/CartContext'
 import CheckoutItem from '@/components/CheckoutItem'
+import axios from 'axios'
 
 export default function Checkout() {
   const { cartItems, getCartTotal } = useContext(CartContext)
@@ -13,6 +14,12 @@ export default function Checkout() {
     setItems(cartItems)
     setCartTotal(getCartTotal())
   }, [cartTotal, cartItems, getCartTotal])
+
+  async function handleCheckout() {
+    console.log('handleCheckout() fired')
+    // const res = await axios.post('/api/create-order', {
+    // })
+  }
 
   return (
     <>
@@ -43,14 +50,18 @@ export default function Checkout() {
             {cartItems.map((cartItem) => (
               <CheckoutItem key={cartItem.id} cartItem={cartItem} />
             ))}
-            <span className='total mt-[30px] ml-auto text-[32px]'>
-              Total: ${cartTotal.toLocaleString()}
-            </span>
-            <button
-              className='bg-black hover:bg-gray-800 text-white mt-4 py-2 px-4 rounded'
-            >
-              Checkout
-            </button>
+            <div className='w-full flex items-center justify-between mt-6'>
+              <span className='total text-[32px]'>
+                Total: ${cartTotal.toLocaleString()}
+              </span>
+              <button
+                type='button'
+                className='bg-black hover:bg-gray-800 text-white py-2 px-4 rounded'
+                onClick={handleCheckout}
+              >
+                Checkout
+              </button>
+            </div>
           </>
         ) : (
           <div className='empty-message mt-[1rem] text-[1.75rem] font-medium'>

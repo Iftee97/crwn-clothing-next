@@ -1,11 +1,12 @@
 import { useState, useEffect, createContext } from 'react'
+import { useLocalStorage } from '@/hooks/useLocalStorage'
 import Cookies from 'js-cookie'
 
 export const AuthContext = createContext()
 
 export default function AuthContextProvider({ children }) {
+  const [user, setUser] = useLocalStorage('user', {})
   const [loggedInUserName, setLoggedInUserName] = useState('')
-  const [isAdminUser, setIsAdminUser] = useState(false)
 
   useEffect(() => {
     const loggedInUserData = JSON.parse(localStorage.getItem('loggedInUserData'))
@@ -16,25 +17,15 @@ export default function AuthContextProvider({ children }) {
       Cookies.set('token', loggedInUserData.token)
       Cookies.set('isAdmin', loggedInUserData.isAdmin)
     }
-    if (loggedInUserData && loggedInUserData.isAdmin) {
-      setIsAdminUser(true)
-    }
-  }, [setLoggedInUserName, setIsAdminUser, isAdminUser])
-
-  useEffect(() => {
-    const isAdmin = Cookies.get('isAdmin')
-    if (isAdmin === 'true') {
-      setIsAdminUser(true)
-    }
-  }, [Cookies.get('isAdmin'), setIsAdminUser])
+  }, [setLoggedInUserName])
 
   return (
     <AuthContext.Provider
       value={{
         loggedInUserName,
         setLoggedInUserName,
-        isAdminUser,
-        setIsAdminUser,
+        user,
+        setUser,
       }}
     >
       {children}

@@ -8,7 +8,7 @@ import UserDropdown from './UserDropdown'
 
 export default function HiddenSidebar() {
   const { showSidebar, toggleSidebar, showUserDropdown, setShowUserDropdown } = useContext(AppContext)
-  const { loggedInUserName, isAdminUser } = useContext(AuthContext)
+  const { loggedInUserName, user } = useContext(AuthContext)
 
   return (
     <div
@@ -73,8 +73,8 @@ export default function HiddenSidebar() {
                 className='bg-blue-200 py-1 px-2 rounded cursor-pointer inline-block'
                 onClick={() => setShowUserDropdown(!showUserDropdown)}
               >
-                {loggedInUserName} {' '}
-                {isAdminUser && <span>(admin)</span>}
+                {user.username} {' '}
+                {user.isAdmin && <span>(admin)</span>}
               </span>
               {showUserDropdown && <UserDropdown />}
             </div>

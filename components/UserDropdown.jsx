@@ -6,7 +6,7 @@ import Cookies from 'js-cookie'
 
 export default function UserDropdown() {
   const { showSidebar, setShowSidebar } = useContext(AppContext)
-  const { setLoggedInUserName, isAdminUser } = useContext(AuthContext)
+  const { setLoggedInUserName, isAdminUser, user } = useContext(AuthContext)
 
   function handleSignOut() {
     setLoggedInUserName('')
@@ -24,7 +24,7 @@ export default function UserDropdown() {
   return (
     <div className='p-3 bg-white shadow-md rounded-md absolute top-[35px] right-[-75px] z-[999] w-[150px]'>
       <div className='flex flex-col items-center gap-2'>
-        {isAdminUser && (
+        {user.isAdmin && (
           <>
             <Link
               href='/all-users'
