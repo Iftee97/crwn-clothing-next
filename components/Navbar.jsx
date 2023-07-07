@@ -15,19 +15,24 @@ export default function Navbar() {
   const [showPopover, setShowPopover] = useState(false)
   const [cartCount, setCartCount] = useState(0)
 
+  // to avoid weird hydration mismatch error
   useEffect(() => {
     setCartCount(getCartItemsCount())
   }, [getCartItemsCount, cartCount])
 
   return (
     <nav className='navigation bg-white shadow-md h-[70px] w-full flex justify-between items-center p-[18px] md:p-[24px]'>
-      <Link href='/' className='logo-container text-2xl font-semibold'>
-        {/* Ecomm_App */}
+      <Link href='/' className='logo-container'>
         <Image
           src='/crwn.svg'
           alt='logo'
           width={40}
           height={40}
+          priority={true}
+          style={{
+            height: 'auto',
+            width: 'auto'
+          }}
         />
       </Link>
       <div className='nav-links-container h-full hidden md:flex items-center gap-6 font-normal'>

@@ -20,15 +20,19 @@ export default function HiddenSidebar() {
         <div className='flex items-center justify-between p-[18px] shadow-md'>
           <Link
             href='/'
-            className='text-2xl font-semibold'
+            className='logo-container'
             onClick={toggleSidebar}
           >
-            {/* Ecomm_App */}
             <Image
               src='/crwn.svg'
               alt='logo'
               width={40}
               height={40}
+              priority={true}
+              style={{
+                height: 'auto',
+                width: 'auto'
+              }}
             />
           </Link>
           <button
@@ -38,7 +42,14 @@ export default function HiddenSidebar() {
             <HiOutlineX className='text-2xl' />
           </button>
         </div>
-        <div className='flex flex-col items-center justify-center gap-4 p-[18px] font-normal'>
+        <div className='flex flex-col items-center justify-center gap-6 mt-[12px] p-[18px] font-normal'>
+          <Link
+            href='/'
+            className='nav-link cursor-pointer'
+            onClick={toggleSidebar}
+          >
+            HOME
+          </Link>
           <Link
             href='/shop'
             className='nav-link cursor-pointer'
