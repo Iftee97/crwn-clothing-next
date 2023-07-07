@@ -20,10 +20,10 @@ export default function Checkout() {
         <title>Checkout | Crwn Clothing</title>
       </Head>
 
-      <div className='checkout-container max-w-[800px] min-h-[90vh] mt-[50px] mx-auto mb-0 flex flex-col items-center'>
+      <div className='checkout-container max-w-[800px] min-h-[90vh] mt-[16px] lg:mt-[40px] mx-auto mb-0 flex flex-col items-center'>
         {items?.length > 0 ? (
           <>
-            <div className='checkout-header w-full py-[10px] flex border-b border-gray-400'>
+            <div className='checkout-header w-full py-[10px] hidden lg:flex border-b border-gray-400'>
               <div className='header-block w-[23%]'>
                 <span>Image</span>
               </div>
