@@ -57,6 +57,7 @@ export default function SignIn() {
               router.push('/')
             } catch (error) {
               console.log('error: >>>>>>>>>', error)
+              toast.error(error?.response?.data?.message)
             } finally {
               setSubmitting(false)
               values.phone = ''
