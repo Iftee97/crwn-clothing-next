@@ -24,6 +24,7 @@ const OrderSchema = new Schema({
   },
   isDelivered: {
     type: Boolean,
+    default: false,
   },
   deliveredAt: {
     type: Date,

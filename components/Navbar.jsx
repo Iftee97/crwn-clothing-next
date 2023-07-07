@@ -14,8 +14,6 @@ export default function Navbar() {
   const { getCartItemsCount, isCartOpen, setIsCartOpen } = useContext(CartContext)
   const [cartCount, setCartCount] = useState(0)
 
-  console.log('user: >>>>>>>>', user)
-
   // to avoid weird hydration mismatch error
   useEffect(() => {
     setCartCount(getCartItemsCount())

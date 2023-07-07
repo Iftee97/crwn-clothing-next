@@ -2,18 +2,10 @@ import { useContext } from 'react'
 import Link from 'next/link'
 import { AppContext } from '@/context/AppContext'
 import { AuthContext } from '@/context/AuthContext'
-import Cookies from 'js-cookie'
 
 export default function UserDropdown() {
   const { showSidebar, setShowSidebar } = useContext(AppContext)
-  const { setLoggedInUserName, isAdminUser, user } = useContext(AuthContext)
-
-  function handleSignOut() {
-    setLoggedInUserName('')
-    localStorage.removeItem('loggedInUserData')
-    Cookies.remove('token')
-    Cookies.remove('isAdmin')
-  }
+  const { user, handleSignOut } = useContext(AuthContext)
 
   function dontShowSidebar() {
     if (showSidebar) {
