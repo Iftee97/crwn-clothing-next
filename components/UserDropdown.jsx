@@ -21,7 +21,7 @@ export default function UserDropdown() {
   }
 
   return (
-    <div className='p-3 bg-white shadow-md rounded-md absolute top-[35px] right-[-75px] w-[150px]'>
+    <div className='p-3 bg-white shadow-md rounded-md absolute top-[35px] right-[-75px] z-[999] w-[150px]'>
       <div className='flex flex-col items-center gap-2'>
         {isAdminUser && (
           <>
@@ -55,7 +55,7 @@ export default function UserDropdown() {
             dontShowSidebar()
           }}
         >
-          sign out
+          Sign Out
         </button>
       </div>
     </div>
