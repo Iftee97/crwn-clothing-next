@@ -11,9 +11,6 @@ export default function Shop() {
   if (categoriesLoading) {
     content = <h2>Loading...</h2>
   }
-  if (!categoriesLoading && categories.length === 0) {
-    content = <h2>No categories found.</h2>
-  }
   if (!categoriesLoading && categories.length > 0) {
     content = categories.map((category) => (
       <CategoryPreview key={category.id} category={category} />
