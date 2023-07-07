@@ -6,7 +6,7 @@ export default function Custom404Page() {
   return (
     <>
       <Head>
-        <title>404 | Ecomm App</title>
+        <title>404 | Crwn Clothing</title>
       </Head>
 
       <main className='flex flex-col items-center justify-center'>

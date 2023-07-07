@@ -15,7 +15,7 @@ export default function SingleProduct() {
 
   useEffect(() => {
     if (productTitle) {
-      document.title = `${productTitle} | Ecomm App`
+      document.title = `${productTitle} | Crwn Clothing`
     }
   }, [productTitle])
 
@@ -25,6 +25,7 @@ export default function SingleProduct() {
       if (!c) return
       const p = c.items.find(item => item.name === productTitle)
       if (!p) return
+      p.category = c.title
       setProduct(p)
     }
   }, [categories, categoryTitle, productTitle])
@@ -43,7 +44,7 @@ export default function SingleProduct() {
   return (
     <>
       <Head>
-        <title>Product | Ecomm App</title>
+        <title>Product | Crwn Clothing</title>
       </Head>
 
       {product ? (

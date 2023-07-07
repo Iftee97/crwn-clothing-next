@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home | Ecomm App</title>
+        <title>Home | Crwn Clothing</title>
       </Head>
 
       <main>

@@ -1,9 +1,8 @@
 import Link from 'next/link'
-import { Fragment, useContext, useRef } from 'react'
+import { Fragment, useContext } from 'react'
 import { CartContext } from '@/context/CartContext'
 import { Dialog, Transition } from '@headlessui/react'
 import { HiOutlineX } from 'react-icons/hi'
-// toLocaleString()
 
 export default function SlidingCart() {
   const {
@@ -18,17 +17,12 @@ export default function SlidingCart() {
     clearCart,
   } = useContext(CartContext)
 
-  const cancelButtonRef = useRef()
-
-  console.log('cartItems: >>>>>>>>', cartItems)
-
   return (
     <Transition.Root show={isCartOpen} as={Fragment}>
       <Dialog
         as="div"
         className="fixed inset-0 z-50 overflow-hidden"
         onClose={() => setIsCartOpen(!isCartOpen)}
-        initialFocus={cancelButtonRef}
       >
         <div className="absolute inset-0 overflow-hidden">
           <Transition.Child
@@ -64,7 +58,6 @@ export default function SlidingCart() {
                           type="button"
                           className="p-2 -m-2 text-gray-400 hover:text-gray-500"
                           onClick={() => setIsCartOpen(false)}
-                          ref={cancelButtonRef}
                         >
                           <span className="sr-only">
                             Close panel
@@ -87,7 +80,7 @@ export default function SlidingCart() {
                                   <div>
                                     <div className="flex justify-between text-base font-medium text-gray-900">
                                       <h3>
-                                        <Link href={`/shop/products/${product.name}`}>
+                                        <Link href={`/shop/${product.category}/${product.name}`}>
                                           <span onClick={() => setIsCartOpen(false)}>
                                             {product.name}
                                           </span>

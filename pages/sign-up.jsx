@@ -15,7 +15,7 @@ export default function SignUp() {
   return (
     <>
       <Head>
-        <title>Sign Up | Ecomm App</title>
+        <title>Sign Up | Crwn Clothing</title>
       </Head>
 
       <div>
@@ -129,7 +129,7 @@ export default function SignUp() {
                   ${isSubmitting && 'cursor-not-allowed opacity-50'}
                 `}
               >
-                {isSubmitting ? 'Submitting...' : 'Submit'}
+                {isSubmitting ? 'Signing up...' : 'Sign up'}
               </button>
             </Form>
           )}

@@ -12,7 +12,7 @@ export default function Category() {
 
   useEffect(() => {
     if (category) {
-      document.title = `${category} | Ecomm App`
+      document.title = `${category} | Crwn Clothing`
     }
   }, [category])
 
@@ -27,7 +27,7 @@ export default function Category() {
   return (
     <>
       <Head>
-        <title>Shop | Ecomm App</title>
+        <title>Shop | Crwn Clothing</title>
       </Head>
 
       <h2 className='category-title text-[36px] mb-[24px] text-center'>

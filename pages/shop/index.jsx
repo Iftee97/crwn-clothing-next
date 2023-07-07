@@ -20,7 +20,7 @@ export default function Shop() {
   return (
     <>
       <Head>
-        <title>Shop | Ecomm App</title>
+        <title>Shop | Crwn Clothing</title>
       </Head>
 
       <div className='shop-container flex flex-col'>
