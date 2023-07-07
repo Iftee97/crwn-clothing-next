@@ -6,7 +6,7 @@ import { AuthContext } from '@/context/AuthContext'
 import { CartContext } from '@/context/CartContext'
 import { HiOutlineMenu, HiOutlineShoppingBag } from 'react-icons/hi'
 import SlidingCart from './SlidingCart'
-import UserDropDown from './UserDropDown'
+import UserDropdown from './UserDropdown'
 
 export default function Navbar() {
   const { toggleSidebar } = useContext(AppContext)
@@ -45,7 +45,7 @@ export default function Navbar() {
               {loggedInUserName} {' '}
               {isAdminUser && <span>(admin)</span>}
             </span>
-            {showPopover && <UserDropDown />}
+            {showPopover && <UserDropdown />}
           </div>
         )}
         <Link href='/shop' className='nav-link cursor-pointer'>

@@ -4,14 +4,20 @@ import { AppContext } from '@/context/AppContext'
 import { AuthContext } from '@/context/AuthContext'
 import Cookies from 'js-cookie'
 
-export default function UserDropDown() {
-  const { toggleSidebar } = useContext(AppContext)
+export default function UserDropdown() {
+  const { showSidebar, setShowSidebar } = useContext(AppContext)
   const { setLoggedInUserName, isAdminUser } = useContext(AuthContext)
 
   function handleSignOut() {
     setLoggedInUserName('')
     localStorage.removeItem('loggedInUserData')
     Cookies.remove('token')
+  }
+
+  function dontShowSidebar() {
+    if (showSidebar) {
+      setShowSidebar(false)
+    }
   }
 
   return (
@@ -22,27 +28,31 @@ export default function UserDropDown() {
             <Link
               href='/all-users'
               className='text-sm hover:underline'
-              onClick={toggleSidebar}
+              onClick={dontShowSidebar}
             >
               Users List
             </Link>
             <Link
               href='/all-orders'
               className='text-sm hover:underline'
-              onClick={toggleSidebar}
+              onClick={dontShowSidebar}
             >
               All orders
             </Link>
           </>
         )}
-        <Link href='/my-orders' className='text-sm hover:underline'>
+        <Link
+          href='/my-orders'
+          className='text-sm hover:underline'
+          onClick={dontShowSidebar}
+        >
           My orders
         </Link>
         <button
           className='text-sm text-red-500 hover:underline border-none'
           onClick={() => {
             handleSignOut()
-            toggleSidebar()
+            dontShowSidebar()
           }}
         >
           sign out

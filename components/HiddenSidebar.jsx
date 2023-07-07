@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { AppContext } from '../context/AppContext'
 import { AuthContext } from '@/context/AuthContext'
 import { HiOutlineX } from 'react-icons/hi'
-import UserDropDown from './UserDropdown'
+import UserDropdown from './UserDropdown'
 
 export default function HiddenSidebar() {
   const { showSidebar, toggleSidebar } = useContext(AppContext)
@@ -77,7 +77,7 @@ export default function HiddenSidebar() {
                 {loggedInUserName} {' '}
                 {isAdminUser && <span>(admin)</span>}
               </span>
-              {showPopover && <UserDropDown />}
+              {showPopover && <UserDropdown />}
             </div>
           )}
         </div>

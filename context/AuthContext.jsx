@@ -18,7 +18,7 @@ export default function AuthContextProvider({ children }) {
     if (loggedInUserData && loggedInUserData.isAdmin) {
       setIsAdminUser(true)
     }
-  }, [])
+  }, [setLoggedInUserName, setIsAdminUser])
 
   return (
     <AuthContext.Provider
