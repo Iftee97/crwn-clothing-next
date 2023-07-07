@@ -7,17 +7,23 @@ import { CartContext } from '@/context/CartContext'
 import { HiOutlineMenu, HiOutlineShoppingBag } from 'react-icons/hi'
 import SlidingCart from './SlidingCart'
 import UserDropdown from './UserDropdown'
+import Cookies from 'js-cookie'
 
 export default function Navbar() {
   const { toggleSidebar, showUserDropdown, setShowUserDropdown } = useContext(AppContext)
-  const { loggedInUserName, isAdminUser } = useContext(AuthContext)
+  const { loggedInUserName, isAdminUser, setIsAdminUser } = useContext(AuthContext)
   const { getCartItemsCount, isCartOpen, setIsCartOpen } = useContext(CartContext)
   const [cartCount, setCartCount] = useState(0)
 
   // to avoid weird hydration mismatch error
   useEffect(() => {
     setCartCount(getCartItemsCount())
-  }, [getCartItemsCount, cartCount])
+
+    const isAdmin = Cookies.get('isAdmin')
+    if (isAdmin) {
+      setIsAdminUser(true)
+    }
+  }, [getCartItemsCount, cartCount, setIsAdminUser, isAdminUser])
 
   return (
     <nav className='navigation bg-white shadow-md h-[70px] w-full flex justify-between items-center p-[18px] md:p-[24px]'>

@@ -27,6 +27,7 @@ export default function AuthContextProvider({ children }) {
         loggedInUserName,
         setLoggedInUserName,
         isAdminUser,
+        setIsAdminUser,
       }}
     >
       {children}
