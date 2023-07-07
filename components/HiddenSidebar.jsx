@@ -1,11 +1,15 @@
-import { useContext } from 'react'
+import { useState, useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { AppContext } from '../context/AppContext'
+import { AuthContext } from '@/context/AuthContext'
 import { HiOutlineX } from 'react-icons/hi'
+import UserDropDown from './UserDropdown'
 
 export default function HiddenSidebar() {
   const { showSidebar, toggleSidebar } = useContext(AppContext)
+  const { loggedInUserName, isAdminUser } = useContext(AuthContext)
+  const [showPopover, setShowPopover] = useState(false)
 
   return (
     <div
@@ -64,6 +68,18 @@ export default function HiddenSidebar() {
           >
             SIGN IN
           </Link>
+          {loggedInUserName && (
+            <div className='relative'>
+              <span
+                className='bg-blue-200 py-1 px-2 rounded cursor-pointer inline-block'
+                onClick={() => setShowPopover(!showPopover)}
+              >
+                {loggedInUserName} {' '}
+                {isAdminUser && <span>(admin)</span>}
+              </span>
+              {showPopover && <UserDropDown />}
+            </div>
+          )}
         </div>
       </div>
     </div>

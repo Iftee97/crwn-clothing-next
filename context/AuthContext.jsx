@@ -5,6 +5,7 @@ export const AuthContext = createContext()
 
 export default function AuthContextProvider({ children }) {
   const [loggedInUserName, setLoggedInUserName] = useState('')
+  const [isAdminUser, setIsAdminUser] = useState(false)
 
   useEffect(() => {
     const loggedInUserData = JSON.parse(localStorage.getItem('loggedInUserData'))
@@ -14,13 +15,17 @@ export default function AuthContextProvider({ children }) {
     if (loggedInUserData && loggedInUserData.token) {
       Cookies.set('token', loggedInUserData.token)
     }
+    if (loggedInUserData && loggedInUserData.isAdmin) {
+      setIsAdminUser(true)
+    }
   }, [])
 
   return (
     <AuthContext.Provider
       value={{
         loggedInUserName,
-        setLoggedInUserName
+        setLoggedInUserName,
+        isAdminUser,
       }}
     >
       {children}

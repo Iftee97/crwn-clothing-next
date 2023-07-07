@@ -49,7 +49,8 @@ export default function SignIn() {
               localStorage.setItem('loggedInUserData', JSON.stringify({
                 username: data.username,
                 phone: data.phone,
-                token: data.token
+                token: data.token,
+                isAdmin: data.isAdmin
               }))
               setLoggedInUserName(data.username)
               Cookies.set('token', data.token)
