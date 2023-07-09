@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout'
+import StripeProvider from '@/components/StripeProvider'
 import AppContextProvider from '@/context/AppContext'
 import AuthContextProvider from '@/context/AuthContext'
 import CartContextProvider from '@/context/CartContext'
@@ -26,7 +27,9 @@ export default function App({ Component, pageProps }) {
         <AuthContextProvider>
           <CartContextProvider>
             <Layout>
-              <Component {...pageProps} />
+              <StripeProvider>
+                <Component {...pageProps} />
+              </StripeProvider>
               <ToastContainer position='bottom-center' theme='dark' />
             </Layout>
           </CartContextProvider>
