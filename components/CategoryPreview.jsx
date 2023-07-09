@@ -14,7 +14,7 @@ export default function CategoryPreview({ category }) {
       <div className='preview grid grid-cols-1 sm:grid-cols-2 sm:gap-x-[16px] lg:grid-cols-4 gap-y-[12px] lg:gap-y-[0] gap-x-[0] lg:gap-x-[20px]'>
         {products?.slice(0, 4).map((product) => (
           <ProductCard
-            key={product.id}
+            key={product._id}
             categoryTitle={title}
             product={product}
           />

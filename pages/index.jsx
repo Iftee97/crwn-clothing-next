@@ -2,8 +2,6 @@ import Head from 'next/head'
 import CategoryItem from '@/components/CategoryItem'
 
 export default function Home({ categories }) {
-  console.log('categories: >>>>>>>>>', categories)
-
   return (
     <>
       <Head>
@@ -22,7 +20,8 @@ export default function Home({ categories }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch('http://localhost:3000/api/categories')
+  const { NEXT_PUBLIC_API_URL } = process.env
+  const res = await fetch(`${NEXT_PUBLIC_API_URL}/categories/get-categories-only`)
   const data = await res.json()
 
   return {
