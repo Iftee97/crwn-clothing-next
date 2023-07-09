@@ -24,7 +24,6 @@ export default function CreateProduct({ categories }) {
         description,
         category
       })
-      console.log('data: >>>>>>>>>', data)
       toast.success(data.message)
       router.push('/')
     } catch (error) {
