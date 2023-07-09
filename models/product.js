@@ -13,7 +13,7 @@ const ProductSchema = new Schema({
     type: String,
     required: [true, 'Description is required'],
   },
-  image: {
+  imageUrl: {
     type: String,
     required: [true, 'Image is required'],
   },

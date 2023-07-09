@@ -9,7 +9,7 @@ import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
 
 export default function SignIn() {
-  const { setLoggedInUserName, user, setUser } = useContext(AuthContext)
+  const { setLoggedInUserName, setUser } = useContext(AuthContext)
   const router = useRouter()
 
   return (

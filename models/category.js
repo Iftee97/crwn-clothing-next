@@ -5,12 +5,14 @@ const CategorySchema = new Schema({
     type: String,
     required: [true, 'Title is required'],
   },
+  imageUrl: {
+    type: String,
+  },
   items: {
-    // type: Array,
-    // required: [true, 'Items is required'],
-    type: Schema.Types.ObjectId,
-    ref: 'Product',
-  }
+    type: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
+    default: [],
+    required: [true, 'Items is required'],
+  },
 })
 
 const Category = models?.Category || model('Category', CategorySchema)
