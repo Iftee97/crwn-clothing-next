@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import CategoryItem from '@/components/CategoryItem'
 
-export default function Home() {
+export default function Home({ data }) {
+  console.log('data: >>>>>>>>>', data)
+
   const categories = [
     {
       id: 1,
@@ -45,4 +47,15 @@ export default function Home() {
       </main>
     </>
   )
+}
+
+export async function getServerSideProps() {
+  const res = await fetch('http://localhost:3000/api/categories')
+  const data = await res.json()
+
+  return {
+    props: {
+      data: data.categories,
+    }
+  }
 }
