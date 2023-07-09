@@ -5,9 +5,9 @@ import { toast } from 'react-toastify'
 import axios from 'axios'
 
 export default function CreateCatetgory() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [title, setTitle] = useState('')
   const [imageUrl, setImageUrl] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const router = useRouter()
 
   async function handleSubmit(e) {
@@ -45,12 +45,12 @@ export default function CreateCatetgory() {
           onSubmit={handleSubmit}
         >
           <div className='form-group mb-2'>
-            <label htmlFor="title" className='block'>
+            <label htmlFor='title' className='block'>
               Title
             </label>
             <input
-              type="string"
-              name="title"
+              type='string'
+              name='title'
               className='border border-[#333] p-2 focus:outline-none rounded text-base min-w-[300px] tracking-[0.1rem]'
               placeholder='e.g. Hats'
               value={title}
@@ -59,12 +59,12 @@ export default function CreateCatetgory() {
             />
           </div>
           <div className='form-group mb-2'>
-            <label htmlFor="imageUrl" className='block'>
+            <label htmlFor='imageUrl' className='block'>
               Image Url
             </label>
             <input
-              type="text"
-              name="imageUrl"
+              type='text'
+              name='imageUrl'
               className='border border-[#333] p-2 focus:outline-none rounded text-base min-w-[300px] tracking-[0.1rem]'
               placeholder='http://example.com/image.png'
               value={imageUrl}
@@ -73,10 +73,10 @@ export default function CreateCatetgory() {
             />
           </div>
           <button
-            type="submit"
+            type='submit'
             disabled={isSubmitting || !title || !imageUrl}
             className={`
-            bg-black hover:bg-gray-800 text-white py-2 px-4 rounded mt-4  
+            bg-black hover:bg-gray-800 text-white py-2 px-4 rounded mt-2 
               ${isSubmitting && 'cursor-not-allowed opacity-50'}
             `}
           >
