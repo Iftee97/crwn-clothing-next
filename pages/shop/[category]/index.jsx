@@ -35,11 +35,13 @@ export default function Category() {
     content = <h2 className='text-center text-2xl font-medium'>
       Loading...
     </h2>
-  } else if (!categoryLoading && category?.items?.length === 0) {
+  }
+  if (!categoryLoading && category?.items?.length === 0) {
     content = <h2 className='text-2xl font-medium'>
       No items found.
     </h2>
-  } else if (!categoryLoading && category?.items?.length > 0) {
+  }
+  if (!categoryLoading && category?.items?.length > 0) {
     content = category.items.map((item) => (
       <div key={item._id} className='mb-[24px]'>
         <ProductCard categoryTitle={categoryTitle} product={item} />

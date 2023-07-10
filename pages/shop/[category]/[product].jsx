@@ -8,7 +8,7 @@ export default function SingleProduct() {
   const router = useRouter()
   const { product: productTitle } = router.query
   const { addItemToCart, increaseQuantity, decreaseQuantity } = useContext(CartContext)
-  const [productLoading, setProductLoading] = useState(true)
+  const [productLoading, setProductLoading] = useState(false)
   const [product, setProduct] = useState(null)
   const [qty, setQty] = useState(1)
 
