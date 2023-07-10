@@ -25,20 +25,27 @@ export default function AllOrders() {
     }
   }
 
+  async function deleteOrder(id) {
+    try {
+      await axios.delete(`/api/orders/delete-order?id=${id}`)
+      setOrders(prevOrders => prevOrders.filter(order => order._id !== id))
+    } catch (error) {
+      console.log('error: >>>>>>>>', error)
+    }
+  }
+
   let content = null
   if (ordersLoading) {
     content = <h2 className='flex items-center justify-center'>
       Loading...
     </h2>
-  }
-  if (!ordersLoading && orders.length === 0) {
+  } else if (orders.length === 0) {
     content = <h2 className='flex items-center justify-center'>
-      You have no orders
+      No orders to show
     </h2>
-  }
-  if (!ordersLoading && orders.length > 0) {
+  } else {
     content = orders.map(order => (
-      <OrderItem key={order._id} order={order} />
+      <OrderItem key={order._id} order={order} deleteOrder={deleteOrder} />
     ))
   }
 

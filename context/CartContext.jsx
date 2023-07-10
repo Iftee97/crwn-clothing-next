@@ -58,7 +58,7 @@ export default function CartContextProvider({ children }) {
     setCartItems([])
   }
 
-  console.log('cartItems: >>>>>>>>>', cartItems)
+  // console.log('cartItems: >>>>>>>>>', cartItems)
 
   return (
     <CartContext.Provider

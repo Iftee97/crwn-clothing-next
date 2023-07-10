@@ -5,7 +5,6 @@ export default async function handler(req, res) {
   try {
     await connectToDb()
     const { user } = req.body
-    console.log({ user })
 
     if (!user) {
       res.status(400)
