@@ -71,18 +71,22 @@ export default function SlidingCart() {
                         {cartItems.length > 0 ? (
                           <ul role='list' className='-my-6 divide-y divide-gray-200'>
                             {cartItems.map((product) => (
-                              <li key={product.id + Math.random()} className='relative flex py-6'>
+                              <li key={product._id + Math.random()} className='relative flex py-6'>
                                 <div className='top-0 left-0 right-0 z-50 w-full h-full absolute hidden' />
                                 <div className='relative flex-shrink-0 w-24 h-24 overflow-hidden border border-gray-200 rounded-md'>
-                                  <img src={product.imageUrl} alt={product.name} className='w-full h-full' />
+                                  <img
+                                    src={product.imageUrl}
+                                    alt={product.title}
+                                    className='w-full h-full'
+                                  />
                                 </div>
                                 <div className='flex flex-col flex-1 ml-4'>
                                   <div>
                                     <div className='flex justify-between text-base font-medium text-gray-900'>
                                       <h3>
-                                        <Link href={`/shop/${product.category}/${product.name}`}>
+                                        <Link href={`/shop/${product.category}/${product.title}`}>
                                           <span onClick={() => setIsCartOpen(false)}>
-                                            {product.name}
+                                            {product.title}
                                           </span>
                                         </Link>
                                       </h3>
@@ -90,9 +94,9 @@ export default function SlidingCart() {
                                         ${product.price.toLocaleString()}
                                       </p>
                                     </div>
-                                    {/* <p className='mt-1 text-sm text-gray-500'>
-                                      {product.name}
-                                    </p> */}
+                                    <p className='mt-1 text-sm text-gray-500'>
+                                      single variant
+                                    </p>
                                   </div>
                                   <div className='flex items-end justify-between flex-1 text-sm'>
                                     <div className='border'>
@@ -150,7 +154,7 @@ export default function SlidingCart() {
                           href='/checkout'
                           className='flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-black hover:bg-gray-800 border border-transparent rounded-md shadow-sm cursor-pointer'
                         >
-                          Checkout
+                          Go To Checkout
                         </Link>
                       </div>
                       <div className='flex justify-center mt-6 text-sm text-center text-gray-500'>

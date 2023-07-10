@@ -19,7 +19,6 @@ export default async function handler(req, res) {
     }
 
     const token = generateToken(user._id)
-    console.log('login token: >>>>>>>>', token)
     return res.status(200).json({
       message: 'User logged in successfully',
       _id: user._id,

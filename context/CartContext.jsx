@@ -5,11 +5,10 @@ export const CartContext = createContext()
 
 export default function CartContextProvider({ children }) {
   const [isCartOpen, setIsCartOpen] = useState(false)
-  // const [cartItems, setCartItems] = useState([]) // without persisting to localStorage
   const [cartItems, setCartItems] = useLocalStorage('cartItems', []) // with persisting to localStorage under the key 'cartItems' with an initial value of []
 
   function addItemToCart(productToAdd, qty) {
-    const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToAdd.id)
+    const existingCartItem = cartItems.find((cartItem) => cartItem._id === productToAdd._id)
     if (existingCartItem) {
       increaseQuantity(productToAdd)
     } else {
@@ -19,7 +18,7 @@ export default function CartContextProvider({ children }) {
 
   function increaseQuantity(productToIncrease) {
     setCartItems(
-      cartItems.map((cartItem) => cartItem.id === productToIncrease.id
+      cartItems.map((cartItem) => cartItem._id === productToIncrease._id
         ? { ...cartItem, quantity: cartItem.quantity + 1 }
         : cartItem
       )
@@ -31,7 +30,7 @@ export default function CartContextProvider({ children }) {
       removeItemFromCart(productToDecrease)
     } else {
       setCartItems(
-        cartItems.map((cartItem) => cartItem.id === productToDecrease.id
+        cartItems.map((cartItem) => cartItem._id === productToDecrease._id
           ? { ...cartItem, quantity: cartItem.quantity - 1 }
           : cartItem
         )
@@ -40,7 +39,7 @@ export default function CartContextProvider({ children }) {
   }
 
   function removeItemFromCart(productToRemove) {
-    setCartItems(cartItems.filter((cartItem) => cartItem.id !== productToRemove.id))
+    setCartItems(cartItems.filter((cartItem) => cartItem._id !== productToRemove._id))
   }
 
   function getCartTotal() {
@@ -58,6 +57,8 @@ export default function CartContextProvider({ children }) {
   function clearCart() {
     setCartItems([])
   }
+
+  // console.log('cartItems: >>>>>>>>>', cartItems)
 
   return (
     <CartContext.Provider

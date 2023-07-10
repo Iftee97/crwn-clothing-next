@@ -1,19 +1,37 @@
 import Head from 'next/head'
-import { useContext } from 'react'
-import { AppContext } from '@/context/AppContext'
+import { useEffect, useState } from 'react'
 import CategoryPreview from '@/components/CategoryPreview'
 
-export default function Shop() {
-  const { categories, categoriesLoading } = useContext(AppContext)
-  // console.log({ categories, categoriesLoading })
+export default function Shop() { // { categories }
+  const [categories, setCategories] = useState([])
+  const [categoriesLoading, setCategoriesLoading] = useState(true)
+
+  useEffect(() => {
+    getCategories()
+  }, [])
+
+  async function getCategories() {
+    try {
+      setCategoriesLoading(true)
+      const res = await fetch(`/api/categories/get-categories-with-items`)
+      const data = await res.json()
+      setCategories(data.categories)
+    } catch (error) {
+      console.log('error: >>>>>>>>>', error)
+    } finally {
+      setCategoriesLoading(false)
+    }
+  }
 
   let content = null
   if (categoriesLoading) {
-    content = <h2>Loading...</h2>
+    content = <h2 className='text-2xl font-medium'>
+      Loading...
+    </h2>
   }
-  if (!categoriesLoading && categories.length > 0) {
+  if (!categoriesLoading && categories?.length > 0) {
     content = categories.map((category) => (
-      <CategoryPreview key={category.id} category={category} />
+      <CategoryPreview key={category._id} category={category} />
     ))
   }
 
