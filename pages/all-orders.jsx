@@ -42,8 +42,6 @@ export default function AllOrders() {
     ))
   }
 
-  console.log('orders: >>>>>>>>', orders)
-
   return (
     <>
       <Head>

@@ -12,13 +12,13 @@ export default function OrderItem({ order }) {
         </h3>
       )}
       <div className='flex flex-col items-center gap-4 w-full text-lg'>
-        {order.items.map((item) => (
+        {order.items.map((item, index) => (
           <div
-            key={item.id}
+            key={item._id || index}
             className='flex items-center justify-between w-full'
           >
             <span className='font-medium'>
-              {item.name}
+              {item.title}
             </span>
             <span>
               {item.quantity} x ${item.price}
