@@ -90,9 +90,9 @@ export default function SlidingCart() {
                                         ${product.price.toLocaleString()}
                                       </p>
                                     </div>
-                                    <p className='mt-1 text-sm text-gray-500'>
+                                    {/* <p className='mt-1 text-sm text-gray-500'>
                                       {product.name}
-                                    </p>
+                                    </p> */}
                                   </div>
                                   <div className='flex items-end justify-between flex-1 text-sm'>
                                     <div className='border'>
