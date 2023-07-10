@@ -6,7 +6,7 @@ export default function CheckoutItem({ cartItem }) {
   const { increaseQuantity, decreaseQuantity, removeItemFromCart } = useContext(CartContext)
   const [itemPrice, setItemPrice] = useState('')
 
-  const { name, imageUrl, price, quantity } = cartItem
+  const { title, imageUrl, price, quantity } = cartItem
 
   // to avoid weird hydration mismatch error
   useEffect(() => {
@@ -22,8 +22,8 @@ export default function CheckoutItem({ cartItem }) {
           className='w-full h-full object-cover'
         />
       </div>
-      <span className='name w-full lg:w-[23%] pr-0 lg:pr-[12px]'>
-        {name}
+      <span className='name font-medium w-full lg:w-[23%] pr-0 lg:pr-[12px]'>
+        {title}
       </span>
       <span className='quantity w-full lg:w-[23%] flex items-center justify-center lg:justify-start gap-4 lg:gap-2'>
         <div

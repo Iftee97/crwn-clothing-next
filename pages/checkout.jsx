@@ -42,7 +42,7 @@ export default function Checkout() {
               </div>
             </div>
             {cartItems.map((cartItem) => (
-              <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+              <CheckoutItem key={cartItem._id} cartItem={cartItem} />
             ))}
             <div className='w-full flex items-center justify-end mt-6'>
               <span className='total text-[32px]'>

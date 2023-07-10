@@ -95,7 +95,7 @@ export default function SlidingCart() {
                                       </p>
                                     </div>
                                     <p className='mt-1 text-sm text-gray-500'>
-                                      {product.title}
+                                      single variant
                                     </p>
                                   </div>
                                   <div className='flex items-end justify-between flex-1 text-sm'>
@@ -154,7 +154,7 @@ export default function SlidingCart() {
                           href='/checkout'
                           className='flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-black hover:bg-gray-800 border border-transparent rounded-md shadow-sm cursor-pointer'
                         >
-                          Checkout
+                          Go To Checkout
                         </Link>
                       </div>
                       <div className='flex justify-center mt-6 text-sm text-center text-gray-500'>
