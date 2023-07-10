@@ -14,16 +14,16 @@ export default function SingleProduct() {
 
   useEffect(() => {
     if (productTitle) {
-      console.log('productTitle: >>>>>>>>>', productTitle)
       document.title = `${productTitle} | Crwn Clothing`
-      getProductByTitle()
+      getProductByTitle(productTitle)
     }
   }, [productTitle])
 
-  async function getProductByTitle() {
+  async function getProductByTitle(title) {
+    if (!title) return
     try {
       setProductLoading(true)
-      const res = await fetch(`/api/products/get-product-by-title?title=${productTitle}`)
+      const res = await fetch(`/api/products/get-product-by-title?title=${title}`)
       const data = await res.json()
       setProduct(data.product)
     } catch (error) {
@@ -102,7 +102,9 @@ export default function SingleProduct() {
   return (
     <>
       <Head>
-        <title>Product | Crwn Clothing</title>
+        <title>
+          {productTitle ? `${productTitle} | Crwn Clothing` : 'Product | Crwn Clothing'}
+        </title>
       </Head>
 
       <>
