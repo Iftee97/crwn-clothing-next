@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
 import Head from 'next/head'
+import { useEffect, useState } from 'react'
 import UserItem from '@/components/UserItem'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 export default function AllUsers() {
   const [users, setUsers] = useState([])
@@ -14,7 +15,12 @@ export default function AllUsers() {
   async function getAllUsers() {
     try {
       setUsersLoading(true)
-      const { data } = await axios.get('/api/users/')
+      const { data } = await axios.get('/api/users/', {
+        headers: {
+          Authorization: `Bearer ${Cookies.get('token')}`,
+          isAdmin: Cookies.get('isAdmin')
+        }
+      })
       setUsers(data)
     } catch (error) {
       console.log('error: >>>>>>>>', error)

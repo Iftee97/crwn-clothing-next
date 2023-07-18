@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from 'react'
 import { AuthContext } from '@/context/AuthContext'
 import OrderItem from '@/components/OrderItem'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 export default function MyOrders() {
   const [orders, setOrders] = useState([])
@@ -16,12 +17,17 @@ export default function MyOrders() {
   async function getOrders() {
     try {
       setOrdersLoading(true)
-      const { data } = await axios.post('/api/orders/my-orders', {
-        user: user._id
+      const { data } = await axios.get('/api/orders/my-orders', {
+        headers: {
+          Authorization: `Bearer ${Cookies.get('token')}`,
+          user: JSON.stringify(user)
+        }
       })
       setOrders(data)
     } catch (error) {
       console.log('error: >>>>>>>>', error)
+      // console.log('error.response.data.error: >>>>>>>>', error.response.data.error)
+      // console.log('error.response.data.message: >>>>>>>>', error.response.data.message)
     } finally {
       setOrdersLoading(false)
     }

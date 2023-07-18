@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import OrderItem from '@/components/OrderItem'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 export default function AllOrders() {
   const [orders, setOrders] = useState([])
@@ -15,7 +16,12 @@ export default function AllOrders() {
   async function getAllOrders() {
     try {
       setOrdersLoading(true)
-      const { data } = await axios.get('/api/orders/all-orders')
+      const { data } = await axios.get('/api/orders/', {
+        headers: {
+          Authorization: `Bearer ${Cookies.get('token')}`,
+          isAdmin: Cookies.get('isAdmin')
+        }
+      })
       setOrders(data)
     } catch (error) {
       console.log('error: >>>>>>>>', error)
