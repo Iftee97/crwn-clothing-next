@@ -13,7 +13,6 @@ export default function SlidingCart() {
     decreaseQuantity,
     removeItemFromCart,
     getCartTotal,
-    getCartItemsCount,
     clearCart,
   } = useContext(CartContext)
 

@@ -55,7 +55,7 @@ export default function CheckoutItem({ cartItem }) {
         </div>
         {/* mobile screens */}
         <div
-          className='block lg:hidden remove-button cursor-pointer text-red-500 text-[22px] mt-2'
+          className='block lg:hidden remove-button cursor-pointer text-red-500 text-[18px] mt-2'
           onClick={() => removeItemFromCart(cartItem)}
         >
           &#10005; remove item
