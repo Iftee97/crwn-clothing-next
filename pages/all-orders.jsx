@@ -31,14 +31,14 @@ export default function AllOrders() {
     }
   }
 
-  async function deleteOrder(id) {
-    try {
-      await axios.delete(`/api/orders/delete-order?id=${id}`)
-      setOrders(prevOrders => prevOrders.filter(order => order._id !== id))
-    } catch (error) {
-      console.log('error: >>>>>>>>', error)
-    }
-  }
+  // async function deleteOrder(id) {
+  //   try {
+  //     await axios.delete(`/api/orders/delete-order?id=${id}`)
+  //     setOrders(prevOrders => prevOrders.filter(order => order._id !== id))
+  //   } catch (error) {
+  //     console.log('error: >>>>>>>>', error)
+  //   }
+  // }
 
   let content = null
   if (ordersLoading) {
@@ -51,7 +51,11 @@ export default function AllOrders() {
     </h2>
   } else {
     content = orders.map(order => (
-      <OrderItem key={order._id} order={order} deleteOrder={deleteOrder} />
+      <OrderItem
+        key={order._id}
+        order={order}
+      // deleteOrder={deleteOrder}
+      />
     ))
   }
 

@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 export default function CreateProduct({ categories }) {
   const [title, setTitle] = useState('')
@@ -23,6 +24,11 @@ export default function CreateProduct({ categories }) {
         price,
         description,
         category
+      }, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get('token')}`,
+          isAdmin: Cookies.get('isAdmin')
+        }
       })
       toast.success(data.message)
       router.push('/')
@@ -156,7 +162,8 @@ export async function getServerSideProps(ctx) {
     }
   }
 
-  const res = await fetch('http://localhost:3000/api/categories')
+  const { NEXT_PUBLIC_API_URL } = process.env
+  const res = await fetch(`${NEXT_PUBLIC_API_URL}/categories/get-categories-only`)
   const data = await res.json()
 
   return {

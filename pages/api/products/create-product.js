@@ -3,6 +3,16 @@ import Category from '@/models/category'
 import { connectToDb } from '@/utils/db'
 
 export default async function handler(req, res) {
+  const { authorization, isadmin } = req.headers
+  if (!authorization) {
+    res.status(401).json({ message: 'Not Authorized' })
+    return
+  }
+  if (isadmin !== 'true') {
+    res.status(401).json({ message: 'Not Authorized as Admin' })
+    return
+  }
+
   try {
     await connectToDb()
     const { title, price, description, imageUrl, category } = req.body

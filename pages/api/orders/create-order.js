@@ -10,6 +10,10 @@ export default async function handler(req, res) {
       res.status(400)
       throw new Error('No order items')
     }
+    if (!user) {
+      res.status(400)
+      throw new Error('Not Authorized')
+    }
 
     const order = new Order({
       user,
