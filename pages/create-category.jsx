@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 export default function CreateCatetgory() {
   const [title, setTitle] = useState('')
@@ -14,9 +15,14 @@ export default function CreateCatetgory() {
     e.preventDefault()
     try {
       setIsSubmitting(true)
-      const { data } = await axios.post('/api/categories/create', {
+      const { data } = await axios.post('/api/categories/create-category', {
         title,
         imageUrl
+      }, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get('token')}`,
+          isAdmin: Cookies.get('isAdmin')
+        }
       })
       toast.success(data.message)
       router.push('/')
