@@ -11,9 +11,9 @@ export default function AppContextProvider({ children }) {
   const [categoriesLoading, setCategoriesLoading] = useState(false)
   const router = useRouter()
 
-  useEffect(() => {
-    getCategories()
-  }, [])
+  // useEffect(() => {
+  //   getCategories()
+  // }, [])
 
   // set showUserDropdown to false when route changes
   useEffect(() => {
@@ -24,17 +24,17 @@ export default function AppContextProvider({ children }) {
     setShowSidebar(!showSidebar)
   }
 
-  async function getCategories() {
-    try {
-      setCategoriesLoading(true)
-      const response = await axios.get('https://iftee97.github.io/categories.json')
-      setCategories(response.data)
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setCategoriesLoading(false)
-    }
-  }
+  // async function getCategories() {
+  //   try {
+  //     setCategoriesLoading(true)
+  //     const response = await axios.get('https://iftee97.github.io/categories.json')
+  //     setCategories(response.data)
+  //   } catch (error) {
+  //     console.log(error)
+  //   } finally {
+  //     setCategoriesLoading(false)
+  //   }
+  // }
 
   return (
     <AppContext.Provider
