@@ -33,9 +33,9 @@ export default function OrderItem({ order, deleteOrder }) {
           </span>
         </div>
       </div>
-      <button onClick={() => deleteOrder(order._id)}>
+      {deleteOrder && <button onClick={() => deleteOrder(order._id)}>
         <BsFillTrash3Fill className='text-red-500 text-xl' />
-      </button>
+      </button>}
     </div>
   )
 }
