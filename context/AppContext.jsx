@@ -1,5 +1,4 @@
 import { useState, useEffect, createContext } from 'react'
-import axios from 'axios'
 import { useRouter } from 'next/router'
 
 export const AppContext = createContext()

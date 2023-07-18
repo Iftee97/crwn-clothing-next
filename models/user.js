@@ -12,7 +12,7 @@ const UserSchema = new Schema({
     length: [10, 'Phone number must be 10 characters'],
     validate: {
       validator: (value) => {
-        return value.startsWith('+880');
+        return value.startsWith('+880')
       },
       message: 'Not a valid Bangladeshi phone number',
     },

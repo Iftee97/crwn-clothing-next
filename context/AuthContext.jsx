@@ -15,13 +15,18 @@ export default function AuthContextProvider({ children }) {
     if (loggedInUserData && loggedInUserData.username) {
       setLoggedInUserName(loggedInUserData.username)
     }
-    if (loggedInUserData && loggedInUserData.token) {
-      Cookies.set('token', loggedInUserData.token)
-      Cookies.set('isAdmin', loggedInUserData.isAdmin)
+    if (loggedInUserData) {
+      const { token, isAdmin } = loggedInUserData
+      console.log({
+        token,
+        isAdmin
+      })
+      Cookies.set('isAdmin', isAdmin)
+      Cookies.set('token', token)
     }
   }, [setLoggedInUserName])
 
-  async function handleSignOut() {
+  const handleSignOut = () => {
     setUser({})
     setLoggedInUserName('')
     localStorage.removeItem('loggedInUserData')
