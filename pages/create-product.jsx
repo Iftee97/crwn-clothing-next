@@ -17,7 +17,7 @@ export default function CreateProduct({ categories }) {
     e.preventDefault()
     try {
       setIsSubmitting(true)
-      const { data } = await axios.post('/api/products/create', {
+      const { data } = await axios.post('/api/products/create-product', {
         title,
         imageUrl,
         price,
