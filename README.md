@@ -1,7 +1,7 @@
 # Crwn Clothing
 
 ### products fetched from:
-https://iftee97.github.io/categories.json
+mongodb
 
 ### admin auth crendentials:
 - phone: `+8801834814276`
