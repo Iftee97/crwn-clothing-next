@@ -7,7 +7,7 @@ import { HiOutlinePlus, HiOutlineMinus } from 'react-icons/hi'
 export default function SingleProduct() {
   const router = useRouter()
   const { product: productTitle } = router.query
-  const { addItemToCart, increaseQuantity, decreaseQuantity } = useContext(CartContext)
+  const { addItemToCart, increaseQuantity, decreaseQuantity, isCartOpen, setIsCartOpen } = useContext(CartContext)
   const [productLoading, setProductLoading] = useState(false)
   const [product, setProduct] = useState(null)
   const [qty, setQty] = useState(1)
@@ -44,6 +44,11 @@ export default function SingleProduct() {
     decreaseQuantity(product)
   }
 
+  function addToCartHandler() {
+    addItemToCart(product, qty)
+    setIsCartOpen(true)
+  }
+
   let content = null
   if (productLoading) {
     content = <h2 className='text-center text-2xl font-medium'>
@@ -62,10 +67,10 @@ export default function SingleProduct() {
           <img
             src={product.imageUrl}
             alt={product.title}
-            className='w-full lg:w-[400px] h-[400px] object-cover'
+            className='w-[400px] h-[400px] object-cover'
           />
           <div className='flex flex-col gap-2 lg:gap-4'>
-            <h2 className='text-[36px]'>
+            <h2 className='text-[36px] text-center font-semibold'>
               {product.title}
             </h2>
             <p className='leading-7 mb-2'>
@@ -89,7 +94,7 @@ export default function SingleProduct() {
             </div>
             <button
               className='bg-black hover:bg-gray-800 text-white mt-4 py-2 px-4 rounded'
-              onClick={() => addItemToCart(product, qty)}
+              onClick={addToCartHandler}
             >
               Add to cart
             </button>

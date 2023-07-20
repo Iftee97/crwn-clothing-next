@@ -44,7 +44,7 @@ export default function Checkout() {
             {cartItems.map((cartItem) => (
               <CheckoutItem key={cartItem._id} cartItem={cartItem} />
             ))}
-            <div className='w-full flex items-center justify-end mt-6'>
+            <div className='w-full flex items-center justify-center lg:justify-end mt-6'>
               <span className='total text-[32px]'>
                 Total: ${cartTotal.toLocaleString()}
               </span>

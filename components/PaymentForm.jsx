@@ -75,12 +75,12 @@ export default function PaymentForm() {
   }
 
   return (
-    <div className='payment-form-container flex justify-end mt-8 w-full'>
-      <form className='payment-form min-w-[500px]' onSubmit={paymentHandler}>
-        <h2 className='font-medium text-xl'>
+    <div className='payment-form-container flex justify-center lg:justify-end mt-8 w-full'>
+      <form className='payment-form min-w-0 lg:min-w-[500px]' onSubmit={paymentHandler}>
+        <h2 className='font-medium text-[22px]'>
           Credit Card Payment:
         </h2>
-        <div className='my-6'>
+        <div className='my-6 border border-gray-300 lg:border-none p-3 lg:p-0'>
           <CardElement />
         </div>
         <button
