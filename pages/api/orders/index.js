@@ -1,5 +1,6 @@
 import Order from '@/models/order'
 import { connectToDb } from '@/utils/db'
+import jwt from 'jsonwebtoken'
 
 export default async function handler(req, res) {
   const { authorization, isadmin } = req.headers
@@ -12,6 +13,12 @@ export default async function handler(req, res) {
   }
   if (isadmin !== 'true') {
     return res.status(401).json({ error: 'Not authorized as an admin' })
+  }
+
+  const token = authorization.split(' ')[1]
+  const decoded = jwt.verify(token, process.env.JWT_SECRET)
+  if (!decoded || !decoded.userId) {
+    return res.status(401).json({ error: 'Invalid Token' })
   }
 
   try {

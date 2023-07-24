@@ -5,6 +5,7 @@ import { AuthContext } from '@/context/AuthContext'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 export default function PaymentForm() {
   const router = useRouter()
@@ -56,6 +57,10 @@ export default function PaymentForm() {
           user: user._id,
           items: cartItems,
           total: amount,
+        }, {
+          headers: {
+            Authorization: `Bearer ${Cookies.get('token')}`,
+          }
         })
         if (orderResponse.status === 201) {
           toast.success('Order placed successfully!')
