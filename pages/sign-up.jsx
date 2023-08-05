@@ -24,16 +24,17 @@ export default function SignUp() {
         </h1>
         <Formik
           initialValues={{
-            phone: '',
+            email: '',
             username: '',
-            password: ''
+            password: '',
+            isAdmin: false
           }}
           validate={values => {
             const errors = {}
-            if (!values.phone) {
-              errors.phone = 'Phone number is required'
-            } else if (values.phone.startsWith('+880') === false) {
-              errors.phone = 'Phone number must begin with +880'
+            if (!values.email) {
+              errors.email = 'Email is required'
+            } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+              errors.email = 'Email address is invalid'
             }
             if (!values.username) {
               errors.username = 'Username is required'
@@ -54,7 +55,7 @@ export default function SignUp() {
               console.log('sign up data: >>>>>>>>>', data)
               localStorage.setItem('loggedInUserData', JSON.stringify({
                 username: data.username,
-                phone: data.phone,
+                email: data.email,
                 token: data.token,
                 isAdmin: data.isAdmin
               }))
@@ -69,7 +70,7 @@ export default function SignUp() {
               toast.error(error?.response?.data?.message)
             } finally {
               setSubmitting(false)
-              values.phone = ''
+              values.email = ''
               values.username = ''
               values.password = ''
             }
@@ -78,17 +79,17 @@ export default function SignUp() {
           {({ isSubmitting }) => (
             <Form className='flex flex-col items-center justify-center text-lg gap-3 mb-6'>
               <div className='form-group mb-2'>
-                <label htmlFor="phone" className='block'>
-                  Phone
+                <label htmlFor="email" className='block'>
+                  Email
                 </label>
                 <Field
                   type="string"
-                  name="phone"
+                  name="email"
                   className='border border-[#333] p-2 focus:outline-none rounded text-base min-w-[300px] tracking-[0.1rem]'
-                  placeholder='+8801711234567'
+                  placeholder='user@email.com'
                 />
                 <ErrorMessage
-                  name="phone"
+                  name="email"
                   component="div"
                   className='text-sm text-red-500'
                 />

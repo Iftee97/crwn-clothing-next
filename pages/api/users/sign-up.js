@@ -6,9 +6,10 @@ import bcrypt from 'bcryptjs'
 export default async function handler(req, res) {
   try {
     await connectToDb() // connect to database first because api route handlers are serverless functions
-    const { username, phone, password, isAdmin } = req.body
+    console.log('req.body: >>>>>>>>', req.body)
+    const { username, email, password, isAdmin } = req.body
 
-    const userExists = await User.findOne({ phone })
+    const userExists = await User.findOne({ email })
     if (userExists) {
       return res.status(400).json({ message: 'User already exists' })
     }
@@ -17,7 +18,7 @@ export default async function handler(req, res) {
     const hashedPassword = await bcrypt.hash(password, salt)
 
     const user = await User.create({
-      phone,
+      email,
       username,
       password: hashedPassword,
       isAdmin,
@@ -28,7 +29,7 @@ export default async function handler(req, res) {
       return res.status(201).json({
         message: 'User created successfully',
         _id: user._id,
-        phone: user.phone,
+        email: user.email,
         username: user.username,
         isAdmin: user.isAdmin,
         token,
@@ -37,6 +38,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: 'Invalid user data' })
     }
   } catch (error) {
+    console.log('/api/users/sign-up error: >>>>>>>>', error)
     return res.status(500).json({ message: 'Error: Could not create user' })
   }
 }
