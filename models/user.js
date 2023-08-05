@@ -5,16 +5,15 @@ const UserSchema = new Schema({
     type: String,
     required: [true, 'Username is required'],
   },
-  phone: {
+  email: {
     type: String,
-    unique: [true, 'Phone number already exists'],
-    required: [true, 'Phone number is required'],
-    length: [10, 'Phone number must be 10 characters'],
+    unique: [true, 'Email already exists'],
+    required: [true, 'Email is required'],
     validate: {
       validator: (value) => {
-        return value.startsWith('+880')
+        return /\S+@\S+\.\S+/.test(value)
       },
-      message: 'Not a valid Bangladeshi phone number',
+      message: 'Not a valid email',
     },
   },
   password: {

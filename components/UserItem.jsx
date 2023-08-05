@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function UserItem({ user }) {
   return (
     <div className='border border-gray-300 p-4 rounded flex flex-col items-start w-full'>
@@ -7,7 +5,7 @@ export default function UserItem({ user }) {
         User ID: {user._id}
       </h2>
       <p className='text-base font-medium mb-3'>
-        phone: {user.phone}
+        email: {user.email}
       </p>
       <p className='text-base font-medium'>
         username: {user.username}
