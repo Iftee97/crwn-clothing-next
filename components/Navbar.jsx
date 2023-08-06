@@ -10,9 +10,11 @@ import UserDropdown from './UserDropdown'
 
 export default function Navbar() {
   const { toggleSidebar, showUserDropdown, setShowUserDropdown } = useContext(AppContext)
-  const { loggedInUserName, user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const { getCartItemsCount, isCartOpen, setIsCartOpen } = useContext(CartContext)
   const [cartCount, setCartCount] = useState(0)
+
+  console.log('user from Navbar: >>>>>>>>>', user)
 
   // to avoid weird hydration mismatch error
   useEffect(() => {
@@ -35,7 +37,7 @@ export default function Navbar() {
         />
       </Link>
       <div className='nav-links-container h-full hidden md:flex items-center gap-6 font-normal'>
-        {loggedInUserName && (
+        {user && user._id ? (
           <div className='relative'>
             <span
               className='bg-blue-200 py-1 px-2 rounded cursor-pointer inline-block'
@@ -46,15 +48,14 @@ export default function Navbar() {
             </span>
             {showUserDropdown && <UserDropdown />}
           </div>
-        )}
-        <Link href='/shop' className='nav-link cursor-pointer'>
-          SHOP
-        </Link>
-        {!loggedInUserName && (
+        ) : (
           <Link href='/sign-in' className='nav-link cursor-pointer'>
             SIGN IN
           </Link>
         )}
+        <Link href='/shop' className='nav-link cursor-pointer'>
+          SHOP
+        </Link>
       </div>
       <div className='flex items-center gap-3'>
         <>
