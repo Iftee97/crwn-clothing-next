@@ -8,7 +8,7 @@ import UserDropdown from './UserDropdown'
 
 export default function HiddenSidebar() {
   const { showSidebar, toggleSidebar, showUserDropdown, setShowUserDropdown } = useContext(AppContext)
-  const { loggedInUserName, user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
 
   return (
     <div
@@ -60,14 +60,7 @@ export default function HiddenSidebar() {
           >
             SHOP
           </Link>
-          <Link
-            href='/sign-in'
-            className='nav-link cursor-pointer'
-            onClick={toggleSidebar}
-          >
-            SIGN IN
-          </Link>
-          {loggedInUserName && (
+          {user && user._id ? (
             <div className='relative'>
               <span
                 className='bg-blue-200 py-1 px-2 rounded cursor-pointer inline-block'
@@ -78,6 +71,14 @@ export default function HiddenSidebar() {
               </span>
               {showUserDropdown && <UserDropdown />}
             </div>
+          ) : (
+            <Link
+              href='/sign-in'
+              className='nav-link cursor-pointer'
+              onClick={toggleSidebar}
+            >
+              SIGN IN
+            </Link>
           )}
         </div>
       </div>

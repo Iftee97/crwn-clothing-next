@@ -9,7 +9,7 @@ import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
 
 export default function SignIn() {
-  const { setLoggedInUserName, setUser } = useContext(AuthContext)
+  const { setUser } = useContext(AuthContext)
   const router = useRouter()
 
   return (
@@ -53,7 +53,6 @@ export default function SignIn() {
                 isAdmin: data.isAdmin
               }))
               setUser(data)
-              setLoggedInUserName(data.username)
               Cookies.set('token', data.token)
               Cookies.set('isAdmin', data.isAdmin)
               toast.success(data.message)
