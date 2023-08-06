@@ -1,19 +1,11 @@
 import Head from 'next/head'
-import { useState, useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import { CartContext } from '@/context/CartContext'
 import CheckoutItem from '@/components/CheckoutItem'
 import PaymentForm from '@/components/PaymentForm'
 
 export default function Checkout() {
   const { cartItems, getCartTotal } = useContext(CartContext)
-  const [items, setItems] = useState([])
-  const [cartTotal, setCartTotal] = useState(0)
-
-  // to avoid weird hydration mismatch error
-  useEffect(() => {
-    setItems(cartItems)
-    setCartTotal(getCartTotal())
-  }, [cartTotal, cartItems, getCartTotal])
 
   return (
     <>
@@ -22,7 +14,7 @@ export default function Checkout() {
       </Head>
 
       <div className='checkout-container max-w-[800px] min-h-[90vh] mt-[16px] lg:mt-[40px] mx-auto mb-0 flex flex-col items-center'>
-        {items?.length > 0 ? (
+        {cartItems?.length > 0 ? (
           <>
             <div className='checkout-header w-full py-[10px] hidden lg:flex border-b border-gray-400'>
               <div className='header-block w-[23%]'>
@@ -46,7 +38,7 @@ export default function Checkout() {
             ))}
             <div className='w-full flex items-center justify-center lg:justify-end mt-6'>
               <span className='total text-[32px]'>
-                Total: ${cartTotal.toLocaleString()}
+                Total: ${getCartTotal().toLocaleString()}
               </span>
             </div>
             <PaymentForm />

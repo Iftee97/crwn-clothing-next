@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { useContext, useState, useEffect } from 'react'
+import { useContext } from 'react'
 import { AppContext } from '../context/AppContext'
 import { AuthContext } from '@/context/AuthContext'
 import { CartContext } from '@/context/CartContext'
@@ -12,14 +12,6 @@ export default function Navbar() {
   const { toggleSidebar, showUserDropdown, setShowUserDropdown } = useContext(AppContext)
   const { user } = useContext(AuthContext)
   const { getCartItemsCount, isCartOpen, setIsCartOpen } = useContext(CartContext)
-  const [cartCount, setCartCount] = useState(0)
-
-  console.log('user from Navbar: >>>>>>>>>', user)
-
-  // to avoid weird hydration mismatch error
-  useEffect(() => {
-    setCartCount(getCartItemsCount())
-  }, [getCartItemsCount, cartCount])
 
   return (
     <nav className='navigation bg-white shadow-md h-[70px] w-full flex justify-between items-center p-[18px] md:p-[24px]'>
@@ -64,7 +56,9 @@ export default function Navbar() {
             onClick={() => setIsCartOpen(!isCartOpen)}
           >
             <HiOutlineShoppingBag className='text-2xl' />
-            <span>({cartCount})</span>
+            <span>
+              ({getCartItemsCount()})
+            </span>
           </button>
           <SlidingCart />
         </>
