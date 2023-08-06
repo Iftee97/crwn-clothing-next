@@ -1,24 +1,18 @@
-import { useState, useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import { CartContext } from '@/context/CartContext'
 import { HiOutlinePlusSm, HiOutlineMinusSm } from 'react-icons/hi'
 
 export default function CheckoutItem({ cartItem }) {
-  const { increaseQuantity, decreaseQuantity, removeItemFromCart } = useContext(CartContext)
-  const [itemPrice, setItemPrice] = useState('')
-
   const { title, imageUrl, price, quantity } = cartItem
 
-  // to avoid weird hydration mismatch error
-  useEffect(() => {
-    setItemPrice(price.toLocaleString())
-  }, [])
+  const { increaseQuantity, decreaseQuantity, removeItemFromCart } = useContext(CartContext)
 
   return (
     <div className='checkout-item-container w-full flex flex-col lg:flex-row items-center text-[24px] lg:text-[20px] py-[15px] min-h-[100px] border-b border-gray-400 text-center lg:text-left font-light'>
       <div className='image-container w-full lg:w-[23%] pr-0 lg:pr-[15px]'>
         <img
           src={imageUrl}
-          alt={name}
+          alt={title}
           className='w-full h-full object-cover'
         />
       </div>
@@ -43,7 +37,8 @@ export default function CheckoutItem({ cartItem }) {
         </div>
       </span>
       <span className='price w-full lg:w-[23%]'>
-        ${itemPrice}
+        {/* ${itemPrice} */}
+        ${price.toLocaleString()}
       </span>
       <>
         {/* larger screens */}

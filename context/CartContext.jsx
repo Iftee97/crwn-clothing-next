@@ -1,11 +1,20 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
 
 export const CartContext = createContext()
 
 export default function CartContextProvider({ children }) {
+  const [isMounted, setIsMounted] = useState(false) // mounted state kept track of to remove weird hydration mismatch error
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [cartItems, setCartItems] = useLocalStorage('cartItems', []) // with persisting to localStorage under the key 'cartItems' with an initial value of []
+
+  useEffect(() => {
+    setIsMounted(true)
+
+    return () => {
+      setIsMounted(false)
+    }
+  }, [])
 
   function addItemToCart(productToAdd, qty) {
     const existingCartItem = cartItems.find((cartItem) => cartItem._id === productToAdd._id)
@@ -59,6 +68,10 @@ export default function CartContextProvider({ children }) {
   }
 
   // console.log('cartItems: >>>>>>>>>', cartItems)
+
+  if (!isMounted) {
+    return null
+  }
 
   return (
     <CartContext.Provider
