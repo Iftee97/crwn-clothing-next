@@ -4,7 +4,7 @@
 mongodb
 
 ### admin auth crendentials:
-- phone: `iftee27@email.com`
+- email: `iftee27@email.com`
 - password: `iftee27`
 
 every signed up user is stored in mongo db, and then used to associate orders they create. those orders and the users which those belong to can be viewed by the admin user. 
