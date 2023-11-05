@@ -22,7 +22,7 @@ export default function AllOrders() {
           isAdmin: Cookies.get('isAdmin')
         }
       })
-      console.log('orders: >>>>>>>>', orders)
+      console.log('orders: >>>>>>>>', data)
       setOrders(data)
     } catch (error) {
       console.log('error: >>>>>>>>', error)
