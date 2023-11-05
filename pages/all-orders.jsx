@@ -22,6 +22,7 @@ export default function AllOrders() {
           isAdmin: Cookies.get('isAdmin')
         }
       })
+      console.log('orders: >>>>>>>>', orders)
       setOrders(data)
     } catch (error) {
       console.log('error: >>>>>>>>', error)
@@ -69,14 +70,9 @@ export default function AllOrders() {
         <h1 className='text-3xl font-bold mb-6'>
           All Orders ({orders.length})
         </h1>
-        {/* <div className='flex flex-col items-center justify-center gap-4'>
+        <div className='flex flex-col items-center justify-center gap-4'>
           {content}
-        </div> */}
-        <pre>
-          <code>
-            {JSON.stringify(orders, null, 2)}
-          </code>
-        </pre>
+        </div>
       </div>
     </>
   )
