@@ -69,9 +69,14 @@ export default function AllOrders() {
         <h1 className='text-3xl font-bold mb-6'>
           All Orders ({orders.length})
         </h1>
-        <div className='flex flex-col items-center justify-center gap-4'>
+        {/* <div className='flex flex-col items-center justify-center gap-4'>
           {content}
-        </div>
+        </div> */}
+        <pre>
+          <code>
+            {JSON.stringify(orders, null, 2)}
+          </code>
+        </pre>
       </div>
     </>
   )
