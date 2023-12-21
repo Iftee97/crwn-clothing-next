@@ -5,6 +5,12 @@ import getBase64 from "@/utils/getLocalBase64";
 export default function Category({ category }) {
   const pageTitle = `${category.title} | Crwn Clothing`;
 
+  async function revalidate() {
+    const response = await fetch(`/api/revalidate?category=${category.title}`);
+    const data = await response.json();
+    console.log("data: >>>>>", data);
+  }
+
   return (
     <>
       <Head>
@@ -21,6 +27,12 @@ export default function Category({ category }) {
           </div>
         ))}
       </div>
+      <button
+        onClick={revalidate}
+        className="text-sm text-white py-2 px-3 bg-red-500"
+      >
+        on-demand revalidation
+      </button>
     </>
   );
 }
