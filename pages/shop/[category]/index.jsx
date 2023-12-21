@@ -55,7 +55,6 @@ export async function getStaticProps({ params }) {
     const blurDataURL = await getBase64(item.imageUrl);
     item.blurDataURL = blurDataURL;
   }
-  console.log("categoryData: >>>>>>>", categoryData);
 
   return {
     props: {

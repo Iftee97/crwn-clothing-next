@@ -1,3 +1,5 @@
+// TODO: ADD SERVER SIDE DATA FETCHING
+
 import Head from "next/head";
 import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
