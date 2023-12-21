@@ -1,11 +1,14 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "@/context/CartContext";
+import { AuthContext } from "@/context/AuthContext";
 import CheckoutItem from "@/components/CheckoutItem";
 import PaymentForm from "@/components/PaymentForm";
 
 export default function Checkout() {
   const { cartItems, getCartTotal } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <>
@@ -41,10 +44,23 @@ export default function Checkout() {
                 Total: ${getCartTotal().toLocaleString()}
               </span>
             </div>
-            <PaymentForm />
+            {user?._id ? (
+              <PaymentForm />
+            ) : (
+              <div className="mt-6 w-full text-sm text-gray-700 text-end font-medium">
+                Please{" "}
+                <Link
+                  href="/sign-in"
+                  className="text-neutral-900 hover:underline"
+                >
+                  sign in
+                </Link>{" "}
+                to continue with payment.
+              </div>
+            )}
           </>
         ) : (
-          <div className="empty-message mt-[1rem] text-[1.75rem] font-medium">
+          <div className="mt-[1rem] text-[1.75rem] font-medium">
             Your cart is empty.
           </div>
         )}

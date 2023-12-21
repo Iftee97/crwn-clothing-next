@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { AuthContext } from "@/context/AuthContext";
@@ -9,6 +10,8 @@ import SlidingCart from "./SlidingCart";
 import UserDropdown from "./UserDropdown";
 
 export default function Navbar() {
+  const router = useRouter();
+
   const { toggleSidebar, showUserDropdown, setShowUserDropdown } =
     useContext(AppContext);
   const { user } = useContext(AuthContext);
@@ -31,6 +34,22 @@ export default function Navbar() {
         />
       </Link>
       <div className="nav-links-container h-full hidden md:flex items-center gap-6 font-normal">
+        <Link
+          href="/"
+          className={`nav-link cursor-pointer py-1 px-2 rounded  
+            ${router.pathname === "/" && "bg-gray-800 text-white"}
+          `}
+        >
+          HOME
+        </Link>
+        <Link
+          href="/shop"
+          className={`nav-link cursor-pointer py-1 px-2 rounded  
+            ${router.pathname === "/shop" && "bg-gray-800 text-white"}
+          `}
+        >
+          SHOP
+        </Link>
         {user && user._id ? (
           <div className="relative">
             <span
@@ -42,13 +61,15 @@ export default function Navbar() {
             {showUserDropdown && <UserDropdown />}
           </div>
         ) : (
-          <Link href="/sign-in" className="nav-link cursor-pointer">
+          <Link
+            href="/sign-in"
+            className={`nav-link cursor-pointer py-1 px-2 rounded 
+              ${router.pathname === "/sign-in" && "bg-gray-800 text-white"}
+            `}
+          >
             SIGN IN
           </Link>
         )}
-        <Link href="/shop" className="nav-link cursor-pointer">
-          SHOP
-        </Link>
       </div>
       <div className="flex items-center gap-3">
         <>

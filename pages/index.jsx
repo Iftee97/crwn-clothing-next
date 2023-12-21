@@ -33,8 +33,6 @@ export async function getStaticProps() {
     category.blurDataURL = blurDataURL;
   }
 
-  // console.log("categories: >>>>>>>>>", categories);
-
   return {
     props: {
       categories,
