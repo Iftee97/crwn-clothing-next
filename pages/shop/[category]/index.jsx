@@ -48,7 +48,6 @@ export async function getStaticProps({ params }) {
     `${process.env.NEXT_PUBLIC_API_URL}/categories/get-category-by-title?title=${category}`
   );
   const { category: categoryData } = await response.json();
-  // console.log("categoryData: >>>>>>>", categoryData);
 
   // Iterate through items array in categoryData and add blurDataURL property using item.imageUrl
   for (const item of categoryData.items) {
@@ -60,6 +59,6 @@ export async function getStaticProps({ params }) {
     props: {
       category: categoryData,
     },
-    revalidate: 60,
+    revalidate: 0,
   };
 }
