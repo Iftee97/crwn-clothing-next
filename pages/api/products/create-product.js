@@ -43,7 +43,13 @@ export default async function handler(req, res) {
     });
 
     res.revalidate(`/shop/${category}`);
-    res.status(200).json({ message: "Product created successfully", product });
+    res
+      .status(200)
+      .json({
+        message: "Product created successfully",
+        revalidated: true,
+        product,
+      });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

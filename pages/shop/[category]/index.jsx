@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+// import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import getBase64 from "@/utils/getLocalBase64";
 
