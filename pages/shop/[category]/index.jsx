@@ -8,12 +8,10 @@ export default function Category({ category }) {
 
   const [isRevalidating, setIsRevalidating] = useState(false);
 
-  const triggerOnDemandRevalidation = async () => {
+  const triggerOnDemandRevalidation = async (title) => {
     const secret = "1767a0d4f434f009817cd49823dddea4";
-    const category = category.title;
-    const encodedCategory = encodeURIComponent(category);
 
-    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/revalidate?secret=${secret}&category=${encodedCategory}`;
+    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/revalidate?secret=${secret}&category=${title}`;
 
     try {
       setIsRevalidating(true);
@@ -57,7 +55,7 @@ export default function Category({ category }) {
         ))}
       </div>
       <button
-        onClick={triggerOnDemandRevalidation}
+        onClick={() => triggerOnDemandRevalidation(category.title)}
         disabled={isRevalidating}
         className="text-sm text-white py-2 px-3 bg-red-500"
       >
@@ -102,6 +100,6 @@ export async function getStaticProps({ params }) {
     props: {
       category: categoryData,
     },
-    // revalidate: 10,
+    revalidate: 10,
   };
 }
