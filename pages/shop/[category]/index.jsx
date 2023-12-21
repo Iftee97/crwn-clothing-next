@@ -49,7 +49,8 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    // fallback: false, // return 404 for pages that don't exist
+    fallback: "blocking", // ssr pages on-demand if pages don't exist
   };
 }
 
@@ -71,6 +72,6 @@ export async function getStaticProps({ params }) {
     props: {
       category: categoryData,
     },
-    revalidate: 10,
+    // revalidate: 10,
   };
 }
