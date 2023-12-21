@@ -6,38 +6,6 @@ import getBase64 from "@/utils/getLocalBase64";
 export default function Category({ category }) {
   const pageTitle = `${category.title} | Crwn Clothing`;
 
-  // const [isRevalidating, setIsRevalidating] = useState(false);
-
-  // const triggerOnDemandRevalidation = async (title) => {
-  //   const secret = "1767a0d4f434f009817cd49823dddea4";
-
-  //   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/revalidate?secret=${secret}&category=${title}`;
-
-  //   try {
-  //     setIsRevalidating(true);
-  //     const response = await fetch(apiUrl, {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-
-  //     if (!response.ok) {
-  //       throw new Error(
-  //         `Failed to trigger revalidation: ${response.statusText}`
-  //       );
-  //     }
-
-  //     const data = await response.json();
-  //     console.log("Revalidation response: >>>>>>>", data);
-  //   } catch (error) {
-  //     setIsRevalidating(false);
-  //     console.error("Error triggering revalidation: >>>>>>", error.message);
-  //   } finally {
-  //     setIsRevalidating(false);
-  //   }
-  // };
-
   return (
     <>
       <Head>
@@ -54,15 +22,6 @@ export default function Category({ category }) {
           </div>
         ))}
       </div>
-      {/* <button
-        onClick={() => triggerOnDemandRevalidation(category.title)}
-        disabled={isRevalidating}
-        className={`text-sm text-white py-2 px-3 bg-red-500 ${
-          isRevalidating && "cursor-not-allowed bg-gray-500"
-        }`}
-      >
-        {isRevalidating ? "Revalidating..." : "Revalidate"}
-      </button> */}
     </>
   );
 }
