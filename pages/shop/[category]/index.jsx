@@ -5,11 +5,23 @@ import getBase64 from "@/utils/getLocalBase64";
 export default function Category({ category }) {
   const pageTitle = `${category.title} | Crwn Clothing`;
 
-  async function revalidate() {
-    const response = await fetch(`/api/revalidate?category=${category.title}`);
-    const data = await response.json();
-    console.log("data: >>>>>", data);
-  }
+  // async function revalidate() {
+  //   const response = await fetch(`/api/revalidate?category=${category.title}`);
+  //   const data = await response.json();
+  //   console.log("data: >>>>>", data);
+  // }
+
+  const [isFetching, setIsFetching] = useState(false);
+
+  const handleRefreshClick = async () => {
+    setIsFetching(true);
+
+    try {
+      await triggerRevalidation(category.title);
+    } finally {
+      setIsFetching(false);
+    }
+  };
 
   return (
     <>
@@ -27,11 +39,14 @@ export default function Category({ category }) {
           </div>
         ))}
       </div>
-      <button
+      {/* <button
         onClick={revalidate}
         className="text-sm text-white py-2 px-3 bg-red-500"
       >
         on-demand revalidation
+      </button> */}
+      <button onClick={handleRefreshClick} disabled={isFetching}>
+        {isFetching ? "Refreshing..." : "Refresh Data"}
       </button>
     </>
   );
@@ -54,7 +69,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, revalidate }) {
   const { category } = params;
 
   const response = await fetch(
@@ -73,5 +88,15 @@ export async function getStaticProps({ params }) {
       category: categoryData,
     },
     // revalidate: 10,
+    revalidate,
   };
+}
+
+export async function triggerRevalidation(category) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/categories/get-category-by-title?title=${category}`
+  );
+
+  // Trigger revalidation by calling the revalidate function
+  revalidate();
 }
