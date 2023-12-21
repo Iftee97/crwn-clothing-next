@@ -1,25 +1,42 @@
 import Head from "next/head";
+import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import getBase64 from "@/utils/getLocalBase64";
 
 export default function Category({ category }) {
   const pageTitle = `${category.title} | Crwn Clothing`;
 
-  // async function revalidate() {
-  //   const response = await fetch(`/api/revalidate?category=${category.title}`);
-  //   const data = await response.json();
-  //   console.log("data: >>>>>", data);
-  // }
+  const [isRevalidating, setIsRevalidating] = useState(false);
 
-  const [isFetching, setIsFetching] = useState(false);
+  const triggerOnDemandRevalidation = async () => {
+    const secret = "1767a0d4f434f009817cd49823dddea4";
+    const category = category.title;
+    const encodedCategory = encodeURIComponent(category);
 
-  const handleRefreshClick = async () => {
-    setIsFetching(true);
+    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/revalidate?secret=${secret}&category=${encodedCategory}`;
 
     try {
-      await triggerRevalidation(category.title);
+      setIsRevalidating(true);
+      const response = await fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(
+          `Failed to trigger revalidation: ${response.statusText}`
+        );
+      }
+
+      const data = await response.json();
+      console.log("Revalidation response: >>>>>>>", data);
+    } catch (error) {
+      setIsRevalidating(false);
+      console.error("Error triggering revalidation: >>>>>>", error.message);
     } finally {
-      setIsFetching(false);
+      setIsRevalidating(false);
     }
   };
 
@@ -39,14 +56,12 @@ export default function Category({ category }) {
           </div>
         ))}
       </div>
-      {/* <button
-        onClick={revalidate}
+      <button
+        onClick={triggerOnDemandRevalidation}
+        disabled={isRevalidating}
         className="text-sm text-white py-2 px-3 bg-red-500"
       >
-        on-demand revalidation
-      </button> */}
-      <button onClick={handleRefreshClick} disabled={isFetching}>
-        {isFetching ? "Refreshing..." : "Refresh Data"}
+        {isRevalidating ? "Revalidating..." : "Revalidate"}
       </button>
     </>
   );
@@ -69,7 +84,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params, revalidate }) {
+export async function getStaticProps({ params }) {
   const { category } = params;
 
   const response = await fetch(
@@ -88,15 +103,5 @@ export async function getStaticProps({ params, revalidate }) {
       category: categoryData,
     },
     // revalidate: 10,
-    revalidate,
   };
-}
-
-export async function triggerRevalidation(category) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/categories/get-category-by-title?title=${category}`
-  );
-
-  // Trigger revalidation by calling the revalidate function
-  revalidate();
 }
