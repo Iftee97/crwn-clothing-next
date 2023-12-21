@@ -22,10 +22,10 @@ export default function Home({ categories }) {
 
 // SSR: getServerSideProps | SSG: getStaticProps
 export async function getStaticProps() {
-  const res = await fetch(
+  const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/categories/get-categories-only`
   );
-  const { categories } = await res.json();
+  const { categories } = await response.json();
 
   // Iterate through categories and add blurDataURL property
   for (const category of categories) {
