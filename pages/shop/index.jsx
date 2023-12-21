@@ -1,5 +1,6 @@
 import Head from "next/head";
 import CategoryPreview from "@/components/CategoryPreview";
+import getBase64 from "@/utils/getLocalBase64";
 
 export default function Shop({ categories }) {
   return (
@@ -23,9 +24,18 @@ export async function getStaticProps() {
   );
   const { categories } = await response.json();
 
+  // Iterate through items array in categories and add blurDataURL property using item.imageUrl
+  for (const category of categories) {
+    for (const item of category.items) {
+      const blurDataURL = await getBase64(item.imageUrl);
+      item.blurDataURL = blurDataURL;
+    }
+  }
+
   return {
     props: {
       categories,
     },
+    revalidate: 60,
   };
 }
