@@ -36,7 +36,7 @@ export default function CreateProduct({ categories }) {
       );
 
       // await fetch(process.env.NEXT_PUBLIC_REVALIDATION_URL);
-      await fetch("/revalidate?secret=1767a0d4f434f009817cd49823dddea4");
+      await fetch("/api/revalidate?secret=1767a0d4f434f009817cd49823dddea4");
 
       toast.success(data.message);
       router.push("/");

@@ -42,7 +42,6 @@ export default async function handler(req, res) {
       },
     });
 
-    await res.revalidate(`/shop/${category}`);
     res.status(200).json({
       message: "Product created successfully",
       revalidated: true,
