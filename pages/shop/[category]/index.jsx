@@ -1,15 +1,44 @@
 import Head from "next/head";
+import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import getBase64 from "@/utils/getLocalBase64";
 
 export default function Category({ category }) {
   const pageTitle = `${category.title} | Crwn Clothing`;
 
-  async function revalidate() {
-    const response = await fetch(`/api/revalidate?category=${category.title}`);
-    const data = await response.json();
-    console.log("data: >>>>>", data);
-  }
+  const [isRevalidating, setIsRevalidating] = useState(false);
+
+  const triggerOnDemandRevalidation = async () => {
+    const secret = "1767a0d4f434f009817cd49823dddea4";
+    const category = category.title;
+    const encodedCategory = encodeURIComponent(category);
+
+    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/revalidate?secret=${secret}&category=${encodedCategory}`;
+
+    try {
+      setIsRevalidating(true);
+      const response = await fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(
+          `Failed to trigger revalidation: ${response.statusText}`
+        );
+      }
+
+      const data = await response.json();
+      console.log("Revalidation response: >>>>>>>", data);
+    } catch (error) {
+      setIsRevalidating(false);
+      console.error("Error triggering revalidation: >>>>>>", error.message);
+    } finally {
+      setIsRevalidating(false);
+    }
+  };
 
   return (
     <>
@@ -28,10 +57,11 @@ export default function Category({ category }) {
         ))}
       </div>
       <button
-        onClick={revalidate}
+        onClick={triggerOnDemandRevalidation}
+        disabled={isRevalidating}
         className="text-sm text-white py-2 px-3 bg-red-500"
       >
-        on-demand revalidation
+        {isRevalidating ? "Revalidating..." : "Revalidate"}
       </button>
     </>
   );
