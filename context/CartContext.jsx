@@ -1,76 +1,86 @@
-import { createContext, useState, useEffect } from 'react'
-import { useLocalStorage } from '@/hooks/useLocalStorage'
+import { createContext, useState, useEffect } from "react";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
-export const CartContext = createContext()
+export const CartContext = createContext();
 
 export default function CartContextProvider({ children }) {
-  const [isMounted, setIsMounted] = useState(false) // mounted state kept track of to remove weird hydration mismatch error
-  const [isCartOpen, setIsCartOpen] = useState(false)
-  const [cartItems, setCartItems] = useLocalStorage('cartItems', []) // with persisting to localStorage under the key 'cartItems' with an initial value of []
+  const [isMounted, setIsMounted] = useState(false); // mounted state kept track of to remove weird hydration mismatch error
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useLocalStorage("cartItems", []); // with persisting to localStorage under the key 'cartItems' with an initial value of []
 
   useEffect(() => {
-    setIsMounted(true)
+    setIsMounted(true);
 
     return () => {
-      setIsMounted(false)
-    }
-  }, [])
+      setIsMounted(false);
+    };
+  }, []);
 
   function addItemToCart(productToAdd, qty) {
-    const existingCartItem = cartItems.find((cartItem) => cartItem._id === productToAdd._id)
+    const existingCartItem = cartItems.find(
+      (cartItem) => cartItem._id === productToAdd._id
+    );
     if (existingCartItem) {
-      increaseQuantity(productToAdd)
+      increaseQuantity(productToAdd);
     } else {
-      setCartItems([...cartItems, { ...productToAdd, quantity: qty }])
+      setCartItems([...cartItems, { ...productToAdd, quantity: qty }]);
     }
   }
 
   function increaseQuantity(productToIncrease) {
     setCartItems(
-      cartItems.map((cartItem) => cartItem._id === productToIncrease._id
-        ? { ...cartItem, quantity: cartItem.quantity + 1 }
-        : cartItem
+      cartItems.map((cartItem) =>
+        cartItem._id === productToIncrease._id
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : cartItem
       )
-    )
+    );
   }
 
   function decreaseQuantity(productToDecrease) {
     if (productToDecrease.quantity === 1) {
-      removeItemFromCart(productToDecrease)
+      removeItemFromCart(productToDecrease);
     } else {
       setCartItems(
-        cartItems.map((cartItem) => cartItem._id === productToDecrease._id
-          ? { ...cartItem, quantity: cartItem.quantity - 1 }
-          : cartItem
+        cartItems.map((cartItem) =>
+          cartItem._id === productToDecrease._id
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
         )
-      )
+      );
     }
   }
 
   function removeItemFromCart(productToRemove) {
-    setCartItems(cartItems.filter((cartItem) => cartItem._id !== productToRemove._id))
+    setCartItems(
+      cartItems.filter((cartItem) => cartItem._id !== productToRemove._id)
+    );
   }
 
   function getCartTotal() {
-    return cartItems.reduce((accumulatedTotal, cartItem) => (
-      accumulatedTotal + cartItem.quantity * cartItem.price
-    ), 0)
+    return cartItems.reduce(
+      (accumulatedTotal, cartItem) =>
+        accumulatedTotal + cartItem.quantity * cartItem.price,
+      0
+    );
   }
 
   function getCartItemsCount() {
-    return cartItems.reduce((accumulatedQuantity, cartItem) => (
-      accumulatedQuantity + cartItem.quantity
-    ), 0)
+    return cartItems.reduce(
+      (accumulatedQuantity, cartItem) =>
+        accumulatedQuantity + cartItem.quantity,
+      0
+    );
   }
 
   function clearCart() {
-    setCartItems([])
+    setCartItems([]);
   }
 
   // console.log('cartItems: >>>>>>>>>', cartItems)
 
   if (!isMounted) {
-    return null
+    return null;
   }
 
   return (
@@ -91,5 +101,5 @@ export default function CartContextProvider({ children }) {
     >
       {children}
     </CartContext.Provider>
-  )
+  );
 }

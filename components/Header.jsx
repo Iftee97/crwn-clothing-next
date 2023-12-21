@@ -1,6 +1,6 @@
-import React from 'react'
-import Navbar from './Navbar'
-import HiddenSidebar from './HiddenSidebar'
+import React from "react";
+import Navbar from "./Navbar";
+import HiddenSidebar from "./HiddenSidebar";
 
 export default function Header() {
   return (
@@ -8,5 +8,5 @@ export default function Header() {
       <HiddenSidebar />
       <Navbar />
     </header>
-  )
+  );
 }

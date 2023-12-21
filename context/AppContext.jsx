@@ -1,20 +1,20 @@
-import { useState, useEffect, createContext } from 'react'
-import { useRouter } from 'next/router'
+import { useState, useEffect, createContext } from "react";
+import { useRouter } from "next/router";
 
-export const AppContext = createContext()
+export const AppContext = createContext();
 
 export default function AppContextProvider({ children }) {
-  const [showSidebar, setShowSidebar] = useState(false)
-  const [showUserDropdown, setShowUserDropdown] = useState(false)
-  const router = useRouter()
+  const [showSidebar, setShowSidebar] = useState(false);
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const router = useRouter();
 
   // set showUserDropdown to false when route changes
   useEffect(() => {
-    setShowUserDropdown(false)
-  }, [router.pathname])
+    setShowUserDropdown(false);
+  }, [router.pathname]);
 
   function toggleSidebar() {
-    setShowSidebar(!showSidebar)
+    setShowSidebar(!showSidebar);
   }
 
   return (
@@ -29,5 +29,5 @@ export default function AppContextProvider({ children }) {
     >
       {children}
     </AppContext.Provider>
-  )
+  );
 }

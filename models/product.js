@@ -1,28 +1,28 @@
-import { Schema, model, models } from 'mongoose'
+import { Schema, model, models } from "mongoose";
 
 const ProductSchema = new Schema({
   title: {
     type: String,
-    required: [true, 'Title is required'],
+    required: [true, "Title is required"],
   },
   price: {
     type: Number,
-    required: [true, 'Price is required'],
+    required: [true, "Price is required"],
   },
   description: {
     type: String,
-    required: [true, 'Description is required'],
+    required: [true, "Description is required"],
   },
   imageUrl: {
     type: String,
-    required: [true, 'Image is required'],
+    required: [true, "Image is required"],
   },
   category: {
     type: Schema.Types.ObjectId,
-    ref: 'Category',
-  }
-})
+    ref: "Category",
+  },
+});
 
-const Product = models?.Product || model('Product', ProductSchema)
+const Product = models?.Product || model("Product", ProductSchema);
 
-export default Product
+export default Product;
