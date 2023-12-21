@@ -35,7 +35,9 @@ export default function CreateProduct({ categories }) {
         }
       );
       toast.success(data.message);
-      router.push("/");
+      router.reload();
+      // router.push("/");
+      router.push(`/shop/${data.product.title}`);
     } catch (error) {
       console.log("error: >>>>>>>>>", error);
       toast.error(error?.response?.data?.message);
