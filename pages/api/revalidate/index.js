@@ -14,13 +14,18 @@ export default async function handler(req, res) {
 
     await res.revalidate(`/shop/${category}`);
 
+    console.log({
+      revalidated: true,
+      revalidationPath: `/shop/${category}`,
+    });
     return res.json({
       revalidated: true,
       revalidationPath: `/shop/${category}`,
     });
-  } catch (err) {
+  } catch (error) {
     // If there was an error, Next.js will continue
     // to show the last successfully generated page
-    return res.status(500).send("Error revalidating");
+    console.log("Error revalidating: >>>>>>>", error);
+    return res.status(500).json({ message: "Error revalidating", error });
   }
 }
