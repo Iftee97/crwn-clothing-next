@@ -18,10 +18,10 @@ export default function Shop({ categories }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch(
+  const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/categories/get-categories-with-items`
   );
-  const { categories } = await res.json();
+  const { categories } = await response.json();
 
   return {
     props: {
