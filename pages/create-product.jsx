@@ -34,11 +34,7 @@ export default function CreateProduct({ categories }) {
           },
         }
       );
-
-      await fetch(
-        `/api/revalidate?secret=1767a0d4f434f009817cd49823dddea4&category=${category}`
-      );
-
+      console.log("new product data: >>>>>>>>>", data);
       toast.success(data.message);
       router.push("/");
     } catch (error) {

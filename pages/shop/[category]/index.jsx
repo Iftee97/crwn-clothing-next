@@ -1,7 +1,6 @@
 import Head from "next/head";
-// import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
-import getBase64 from "@/utils/getLocalBase64";
+// import getBase64 from "@/utils/getLocalBase64";
 
 export default function Category({ category }) {
   const pageTitle = `${category.title} | Crwn Clothing`;
@@ -51,11 +50,11 @@ export async function getStaticProps({ params }) {
   );
   const { category: categoryData } = await response.json();
 
-  // Iterate through items array in categoryData and add blurDataURL property using item.imageUrl
-  for (const item of categoryData.items) {
-    const blurDataURL = await getBase64(item.imageUrl);
-    item.blurDataURL = blurDataURL;
-  }
+  // // Iterate through items array in categoryData and add blurDataURL property using item.imageUrl
+  // for (const item of categoryData.items) {
+  //   const blurDataURL = await getBase64(item.imageUrl);
+  //   item.blurDataURL = blurDataURL;
+  // }
 
   return {
     props: {
