@@ -60,6 +60,6 @@ export async function getStaticProps({ params }) {
     props: {
       category: categoryData,
     },
-    revalidate: 10,
+    revalidate: 60,
   };
 }
