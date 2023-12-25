@@ -45,3 +45,45 @@ export default async function handler(req, res) {
   }
 }
 */
+
+// // example implementation from frontend for the paginated api:
+/* 
+import { useState, useEffect } from 'react';
+
+export default function ProductList() {
+  const [products, setProducts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+
+  useEffect(() => {    
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(`/api/products?page=${page}&limit=${limit}`);
+        const data = await response.json();
+        setProducts(data.products);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+    fetchProducts();
+  }, [page, limit]);
+
+  return (
+    <div>
+      <h1>Product List</h1>
+
+      <ul>
+        {products.map(product => (
+          <li key={product._id}>{product.name}</li>
+        ))}
+      </ul>
+
+      <div>
+        <button onClick={() => setPage(prevPage => Math.max(prevPage - 1, 1))}>Previous Page</button>
+        <span>Page {page}</span>
+        <button onClick={() => setPage(prevPage => prevPage + 1)}>Next Page</button>
+      </div>
+    </div>
+  );
+};
+*/
