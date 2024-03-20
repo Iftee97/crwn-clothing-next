@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { CartContext } from "@/context/CartContext";
@@ -6,6 +7,20 @@ import { HiOutlinePlus, HiOutlineMinus } from "react-icons/hi";
 
 export default function SingleProduct({ product }) {
   console.log("product: >>>>>>>", product);
+
+  if (!product) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[75vh]">
+        <p className="text-2xl">Product not found</p>
+        <Link
+          href="/shop"
+          className="border border-neutral-900 py-2 px-3 rounded bg-white text-black hover:bg-gray-100 mt-4 cursor-pointer"
+        >
+          Go To Shop
+        </Link>
+      </div>
+    );
+  }
 
   const router = useRouter();
   const { product: productTitle } = router.query;
