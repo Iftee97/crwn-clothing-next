@@ -120,6 +120,8 @@ import { HiOutlinePlus, HiOutlineMinus } from "react-icons/hi";
 // }
 
 export default function SingleProduct({ product }) {
+  console.log("product: >>>>>>>", product);
+
   const router = useRouter();
   const { product: productTitle } = router.query;
   const {
