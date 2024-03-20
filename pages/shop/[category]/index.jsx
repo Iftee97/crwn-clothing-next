@@ -1,6 +1,5 @@
 import Head from "next/head";
 import ProductCard from "@/components/ProductCard";
-// import getBase64 from "@/utils/getLocalBase64";
 
 export default function Category({ category }) {
   const pageTitle = `${category.title} | Crwn Clothing`;
@@ -49,12 +48,6 @@ export async function getStaticProps({ params }) {
     `${process.env.NEXT_PUBLIC_API_URL}/categories/get-category-by-title?title=${category}`
   );
   const { category: categoryData } = await response.json();
-
-  // // Iterate through items array in categoryData and add blurDataURL property using item.imageUrl
-  // for (const item of categoryData.items) {
-  //   const blurDataURL = await getBase64(item.imageUrl);
-  //   item.blurDataURL = blurDataURL;
-  // }
 
   return {
     props: {
