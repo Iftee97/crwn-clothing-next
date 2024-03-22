@@ -17,7 +17,6 @@ export default function AuthContextProvider({ children }) {
     );
     if (loggedInUserData) {
       const { token, isAdmin } = loggedInUserData;
-      console.log({ token, isAdmin });
       Cookies.set("isAdmin", isAdmin);
       Cookies.set("token", token);
     }

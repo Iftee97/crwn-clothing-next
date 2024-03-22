@@ -7,8 +7,6 @@ import { CartContext } from "@/context/CartContext";
 import { HiOutlinePlus, HiOutlineMinus } from "react-icons/hi";
 
 export default function SingleProduct({ product }) {
-  console.log("product: >>>>>>>", product);
-
   if (!product) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[75vh]">

@@ -3,7 +3,6 @@ import OrderItem from "@/components/OrderItem";
 import axios from "axios";
 
 export default function MyOrders({ orders }) {
-  console.log("my orders: >>>>>>>>", orders);
   return (
     <>
       <Head>
