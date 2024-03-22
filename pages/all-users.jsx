@@ -1,47 +1,8 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
 import UserItem from "@/components/UserItem";
 import axios from "axios";
-import Cookies from "js-cookie";
 
-export default function AllUsers() {
-  const [users, setUsers] = useState([]);
-  const [usersLoading, setUsersLoading] = useState(false);
-
-  useEffect(() => {
-    getAllUsers();
-  }, []);
-
-  async function getAllUsers() {
-    try {
-      setUsersLoading(true);
-      const { data } = await axios.get("/api/users/", {
-        headers: {
-          Authorization: `Bearer ${Cookies.get("token")}`,
-          isAdmin: Cookies.get("isAdmin"),
-        },
-      });
-      setUsers(data);
-    } catch (error) {
-      console.log("error: >>>>>>>>", error);
-    } finally {
-      setUsersLoading(false);
-    }
-  }
-
-  let content = null;
-  if (usersLoading) {
-    content = <h2 className="flex items-center justify-center">Loading...</h2>;
-  }
-  if (!usersLoading && users.length === 0) {
-    content = (
-      <h2 className="flex items-center justify-center">You have no users</h2>
-    );
-  }
-  if (!usersLoading && users.length > 0) {
-    content = users.map((user) => <UserItem key={user._id} user={user} />);
-  }
-
+export default function AllUsers({ users }) {
   return (
     <>
       <Head>
@@ -51,30 +12,49 @@ export default function AllUsers() {
       <div className="flex flex-col items-center justify-center">
         <h1 className="text-3xl font-bold mb-6">All Users ({users.length})</h1>
         <div className="flex flex-col items-center justify-center gap-4">
-          {content}
+          {users.map((user) => (
+            <UserItem key={user._id} user={user} />
+          ))}
         </div>
       </div>
     </>
   );
 }
 
-// // route guard - if user is not admin, redirect to home page -- commented out because we're using middleware for route guards
-// export async function getServerSideProps(ctx) {
-//   const { req, res } = ctx;
-//   const { isAdmin } = req.cookies;
+export async function getServerSideProps(ctx) {
+  const { req, res } = ctx;
+  const { isAdmin } = req.cookies;
 
-//   if (isAdmin !== "true") {
-//     return {
-//       redirect: {
-//         destination: "/",
-//         permanent: false,
-//       },
-//     };
-//   }
+  // // route guard - if user is not admin, redirect to home page -- commented out because we're using middleware for route guards
+  // if (isAdmin !== "true") {
+  //   return {
+  //     redirect: {
+  //       destination: "/",
+  //       permanent: false,
+  //     },
+  //   };
+  // }
 
-//   return {
-//     props: {
-//       //
-//     },
-//   };
-// }
+  let users = [];
+  try {
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/users/`,
+      {
+        headers: {
+          Authorization: `Bearer ${req.cookies.token}`,
+          isAdmin,
+        },
+      }
+    );
+    users = data;
+  } catch (error) {
+    console.log("error: >>>>>>>>", error);
+    users = [];
+  }
+
+  return {
+    props: {
+      users,
+    },
+  };
+}

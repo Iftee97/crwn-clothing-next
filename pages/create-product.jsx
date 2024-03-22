@@ -153,8 +153,8 @@ export default function CreateProduct({ categories }) {
 }
 
 export async function getServerSideProps(ctx) {
-  const { req } = ctx;
-  const { isAdmin } = req.cookies;
+  // const { req } = ctx;
+  // const { isAdmin } = req.cookies;
 
   // // route guard - if user is not admin, redirect to home page -- commented out because we're using middleware for route guards
   // if (isAdmin !== "true") {
