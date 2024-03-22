@@ -14,8 +14,8 @@ export default function CategoryItem({ category }) {
         alt={category.title}
         width={500}
         height={500}
-        // placeholder="blur"
-        // blurDataURL={category.blurDataURL}
+        placeholder="blur"
+        blurDataURL={category.blurDataURL}
         className="w-full h-full object-cover hover:transition-transform hover:delay-0 hover:ease-[custom-cubic] hover:scale-110 hover:duration-[3500ms] hover:opacity-90"
       />
       <div className="h-[72px] lg:h-[90px] p-[18px] lg:p-[24px] flex flex-col items-center justify-center absolute border border-black bg-white opacity-70 group-hover:opacity-90">

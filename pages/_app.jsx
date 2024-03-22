@@ -5,6 +5,7 @@ import AuthContextProvider from "@/context/AuthContext";
 import CartContextProvider from "@/context/CartContext";
 import { Montserrat } from "next/font/google";
 import { ToastContainer } from "react-toastify";
+import NextTopLoader from "nextjs-toploader";
 import "@/styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -28,9 +29,10 @@ export default function App({ Component, pageProps }) {
           <CartContextProvider>
             <Layout>
               <StripeProvider>
+                <ToastContainer position="bottom-center" theme="dark" />
+                <NextTopLoader showSpinner={false} />
                 <Component {...pageProps} />
               </StripeProvider>
-              <ToastContainer position="bottom-center" theme="dark" />
             </Layout>
           </CartContextProvider>
         </AuthContextProvider>
