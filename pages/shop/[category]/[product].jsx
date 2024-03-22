@@ -54,7 +54,7 @@ export default function SingleProduct({ product }) {
       </Head>
       <div className="max-w-[768px] mx-auto">
         <div className="flex flex-col lg:flex-row items-start justify-center gap-10 mb-6">
-          <div className="relative w-[500px] h-[500px] flex-1">
+          <div className="relative w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] flex-1">
             <Image
               src={product.imageUrl}
               alt={product.title}
