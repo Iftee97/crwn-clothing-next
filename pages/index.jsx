@@ -1,6 +1,6 @@
 import Head from "next/head";
 import CategoryItem from "@/components/CategoryItem";
-import getBase64 from "@/utils/getLocalBase64";
+// import getBase64 from "@/utils/getLocalBase64";
 
 export default function Home({ categories }) {
   return (
@@ -27,11 +27,11 @@ export async function getStaticProps() {
   );
   const { categories } = await response.json();
 
-  // Iterate through categories and add blurDataURL property
-  for (const category of categories) {
-    const blurDataURL = await getBase64(category.imageUrl);
-    category.blurDataURL = blurDataURL;
-  }
+  // // Iterate through categories and add blurDataURL property
+  // for (const category of categories) {
+  //   const blurDataURL = await getBase64(category.imageUrl);
+  //   category.blurDataURL = blurDataURL;
+  // }
 
   return {
     props: {

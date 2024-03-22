@@ -133,7 +133,7 @@ export default function SlidingCart() {
                                           removeItemFromCart(product)
                                         }
                                         type="button"
-                                        className="font-medium text-gray-500 hover:text-gray-800"
+                                        className="font-medium text-red-500 hover:text-red-600"
                                       >
                                         Remove
                                       </button>

@@ -9,6 +9,7 @@ export default function AuthContextProvider({ children }) {
   const [isMounted, setIsMounted] = useState(false); // mounted state kept track of to remove weird hydration mismatch error
   const [user, setUser] = useLocalStorage("user", {});
   const router = useRouter();
+  console.log("router: >>>>>>", router);
 
   useEffect(() => {
     setIsMounted(true);
