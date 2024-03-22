@@ -9,7 +9,6 @@ export async function middleware(request) {
   const adminOnlyPaths = [
     "/all-users",
     "/all-orders",
-    "/my-orders",
     "/create-category",
     "/create-product",
   ];
@@ -26,6 +25,12 @@ export async function middleware(request) {
     } else {
       return NextResponse.redirect(new URL("/", request.url));
     }
+  }
+
+  if (!tokenCookie && path === "/my-orders") {
+    return NextResponse.redirect(new URL("/", request.url));
+  } else {
+    return NextResponse.next();
   }
 }
 
