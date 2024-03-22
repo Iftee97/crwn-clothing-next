@@ -56,7 +56,7 @@ export default function SingleProduct({ product }) {
         <div className="flex flex-col lg:flex-row items-start justify-center gap-10 mb-6">
           <>
             {/* hidden on small, show on large screens and above */}
-            <div className="hidden lg:relative lg:w-[500px] lg:h-[500px] lg:flex-1">
+            <div className="hidden lg:flex lg:relative lg:w-[500px] lg:h-[500px] lg:flex-1">
               <Image
                 src={product.imageUrl}
                 alt={product.title}
