@@ -54,22 +54,26 @@ export default function SingleProduct({ product }) {
       </Head>
       <div className="max-w-[768px] mx-auto">
         <div className="flex flex-col lg:flex-row items-start justify-center gap-10 mb-6">
-          <div className="hidden lg:relative lg:w-[500px] lg:h-[500px] lg:flex-1">
-            <Image
+          <>
+            {/* hidden on small, show on large screens and above */}
+            <div className="hidden lg:relative lg:w-[500px] lg:h-[500px] lg:flex-1">
+              <Image
+                src={product.imageUrl}
+                alt={product.title}
+                // width={400}
+                // height={400}
+                sizes="500px" // adds a fixed size, better approach than sepcifying fixed height and width
+                fill={true} // sizes and fill must be used together
+                className="object-cover w-full h-full mx-auto"
+              />
+            </div>
+            {/* hidden on large, show on small screens */}
+            <img
               src={product.imageUrl}
               alt={product.title}
-              // width={400}
-              // height={400}
-              sizes="500px" // adds a fixed size, better approach than sepcifying fixed height and width
-              fill={true} // sizes and fill must be used together
-              className="object-cover w-full h-full mx-auto"
+              className="w-[400px] h-[400px] object-cover lg:hidden"
             />
-          </div>
-          <img
-            src={product.imageUrl}
-            alt={product.title}
-            className="w-[400px] h-[400px] object-cover lg:hidden"
-          />
+          </>
           <div className="flex flex-col lg:flex-1 gap-2 lg:gap-4">
             <h2 className="text-[36px] text-center font-semibold">
               {product.title}
