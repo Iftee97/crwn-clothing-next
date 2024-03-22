@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { CartContext } from "@/context/CartContext";
@@ -55,12 +56,18 @@ export default function SingleProduct({ product }) {
       </Head>
       <div className="max-w-[768px] mx-auto">
         <div className="flex flex-col lg:flex-row items-start justify-center gap-10 mb-6">
-          <img
-            src={product.imageUrl}
-            alt={product.title}
-            className="w-[400px] h-[400px] object-cover"
-          />
-          <div className="flex flex-col gap-2 lg:gap-4">
+          <div className="relative w-[500px] h-[500px] flex-1">
+            <Image
+              src={product.imageUrl}
+              alt={product.title}
+              // width={400}
+              // height={400}
+              sizes="500px" // adds a fixed size, better approach than sepcifying fixed height and width
+              fill={true} // sizes and fill must be used together
+              className="object-cover w-full h-full mx-auto"
+            />
+          </div>
+          <div className="flex flex-col flex-1 gap-2 lg:gap-4">
             <h2 className="text-[36px] text-center font-semibold">
               {product.title}
             </h2>

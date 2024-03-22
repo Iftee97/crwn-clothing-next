@@ -30,7 +30,7 @@ export default function App({ Component, pageProps }) {
             <Layout>
               <StripeProvider>
                 <ToastContainer position="bottom-center" theme="dark" />
-                <NextTopLoader showSpinner={false} />
+                <NextTopLoader showSpinner={false} color="#020617" />
                 <Component {...pageProps} />
               </StripeProvider>
             </Layout>
