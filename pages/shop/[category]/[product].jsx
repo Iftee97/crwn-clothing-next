@@ -54,7 +54,7 @@ export default function SingleProduct({ product }) {
       </Head>
       <div className="max-w-[768px] mx-auto">
         <div className="flex flex-col lg:flex-row items-start justify-center gap-10 mb-6">
-          <div className="relative w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] flex-1">
+          <div className="lg:relative lg:w-[500px] lg:h-[500px] lg:flex-1">
             <Image
               src={product.imageUrl}
               alt={product.title}
@@ -65,7 +65,7 @@ export default function SingleProduct({ product }) {
               className="object-cover w-full h-full mx-auto"
             />
           </div>
-          <div className="flex flex-col flex-1 gap-2 lg:gap-4">
+          <div className="flex flex-col lg:flex-1 gap-2 lg:gap-4">
             <h2 className="text-[36px] text-center font-semibold">
               {product.title}
             </h2>
