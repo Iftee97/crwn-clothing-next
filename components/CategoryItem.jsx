@@ -5,7 +5,6 @@ export default function CategoryItem({ category }) {
   return (
     <Link
       href={`/shop/${category.title}`}
-      // min-w-[30%]
       className="category-item-container h-60 flex flex-auto items-center justify-center border border-black overflow-hidden mx-0 lg:m-2"
     >
       {/* The width and height attributes are used to infer the correct aspect ratio of image and avoid layout shift from the image loading in. The width and height do not determine the rendered size of the image file. */}
