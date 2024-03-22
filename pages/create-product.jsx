@@ -156,14 +156,15 @@ export async function getServerSideProps(ctx) {
   const { req } = ctx;
   const { isAdmin } = req.cookies;
 
-  if (isAdmin !== "true") {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
+  // // route guard - if user is not admin, redirect to home page -- commented out because we're using middleware for route guards
+  // if (isAdmin !== "true") {
+  //   return {
+  //     redirect: {
+  //       destination: "/",
+  //       permanent: false,
+  //     },
+  //   };
+  // }
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/categories/get-categories-only`

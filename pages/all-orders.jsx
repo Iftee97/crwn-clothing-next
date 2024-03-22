@@ -76,23 +76,23 @@ export default function AllOrders() {
   );
 }
 
-// route guard - if user is not admin, redirect to home page
-export async function getServerSideProps(ctx) {
-  const { req, res } = ctx;
-  const { isAdmin } = req.cookies;
+// // route guard - if user is not admin, redirect to home page -- commented out because we're using middleware for route guards
+// export async function getServerSideProps(ctx) {
+//   const { req, res } = ctx;
+//   const { isAdmin } = req.cookies;
 
-  if (isAdmin !== "true") {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
+//   if (isAdmin !== "true") {
+//     return {
+//       redirect: {
+//         destination: "/",
+//         permanent: false,
+//       },
+//     };
+//   }
 
-  return {
-    props: {
-      //
-    },
-  };
-}
+//   return {
+//     props: {
+//       //
+//     },
+//   };
+// }

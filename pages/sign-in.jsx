@@ -129,23 +129,23 @@ export default function SignIn() {
   );
 }
 
-// route guard - if user is logged in, redirect to home page
-export async function getServerSideProps(ctx) {
-  const { req, res } = ctx;
-  const { token } = req.cookies;
+// // route guard - if user is logged in, redirect to home page -- commented out because we're using middleware for route guards
+// export async function getServerSideProps(ctx) {
+//   const { req, res } = ctx;
+//   const { token } = req.cookies;
 
-  if (token) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
+//   if (token) {
+//     return {
+//       redirect: {
+//         destination: "/",
+//         permanent: false,
+//       },
+//     };
+//   }
 
-  return {
-    props: {
-      //
-    },
-  };
-}
+//   return {
+//     props: {
+//       //
+//     },
+//   };
+// }
