@@ -241,3 +241,27 @@ export default function SingleProduct({ product }) {
     </>
   );
 }
+
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+}
+
+export async function getStaticProps(context) {
+  const {
+    params: { product: productTitle },
+  } = context;
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/products/get-product-by-title?title=${productTitle}`
+  );
+  const { product } = await res.json();
+
+  return {
+    props: {
+      product,
+    },
+  };
+}
