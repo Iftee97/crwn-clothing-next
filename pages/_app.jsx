@@ -1,12 +1,12 @@
+import "@/styles/globals.css";
+import { Montserrat } from "next/font/google";
 import Layout from "@/components/Layout";
-import StripeProvider from "@/components/StripeProvider";
 import AppContextProvider from "@/context/AppContext";
 import AuthContextProvider from "@/context/AuthContext";
 import CartContextProvider from "@/context/CartContext";
-import { Montserrat } from "next/font/google";
+import StripeProvider from "@/components/StripeProvider";
 import { ToastContainer } from "react-toastify";
 import NextTopLoader from "nextjs-toploader";
-import "@/styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
 
 const montserrat = Montserrat({
