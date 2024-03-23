@@ -80,7 +80,7 @@ export default function SingleProduct({ product }) {
               height={400}
               className="object-cover mx-auto lg:hidden"
             /> */}
-            <div className="relative flex w-[350px] h-[350px] mx-auto lg:hidden">
+            <div className="relative flex w-full h-[350px] mx-auto lg:hidden">
               <Image
                 src={product.imageUrl}
                 alt={product.title}
