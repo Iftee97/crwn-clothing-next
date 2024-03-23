@@ -86,7 +86,7 @@ export default function SingleProduct({ product }) {
                 alt={product.title}
                 sizes="350px"
                 fill={true}
-                className="object-cover w-full h-full"
+                className="object-cover w-full h-full mx-auto"
               />
             </div>
           </>
