@@ -68,6 +68,11 @@ export default function SingleProduct({ product }) {
               />
             </div>
             {/* hidden on large, show on small screens */}
+            {/* <img
+              src={product.imageUrl}
+              alt={product.title}
+              className="w-[400px] h-[400px] object-cover lg:hidden"
+            /> */}
             <Image
               src={product.imageUrl}
               alt={product.title}
