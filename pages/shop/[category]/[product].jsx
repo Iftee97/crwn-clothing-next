@@ -68,10 +68,12 @@ export default function SingleProduct({ product }) {
               />
             </div>
             {/* hidden on large, show on small screens */}
-            <img
+            <Image
               src={product.imageUrl}
               alt={product.title}
-              className="w-[400px] h-[400px] object-cover lg:hidden"
+              width={400}
+              height={400}
+              className="object-cover mx-auto lg:hidden"
             />
           </>
           <div className="flex flex-col lg:flex-1 gap-2 lg:gap-4">
