@@ -73,13 +73,22 @@ export default function SingleProduct({ product }) {
               alt={product.title}
               className="w-[400px] h-[400px] object-cover lg:hidden"
             /> */}
-            <Image
+            {/* <Image
               src={product.imageUrl}
               alt={product.title}
               width={400}
               height={400}
               className="object-cover mx-auto lg:hidden"
-            />
+            /> */}
+            <div className="relative flex w-[350px] h-[350px] lg:hidden">
+              <Image
+                src={product.imageUrl}
+                alt={product.title}
+                sizes="350px"
+                fill={true}
+                className="object-cover w-full h-full"
+              />
+            </div>
           </>
           <div className="flex flex-col lg:flex-1 gap-2 lg:gap-4">
             <h2 className="text-[36px] text-center font-semibold">
