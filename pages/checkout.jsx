@@ -51,7 +51,7 @@ export default function Checkout() {
                 Please{" "}
                 <Link
                   href="/sign-in"
-                  className="text-neutral-900 hover:underline"
+                  className="text-blue-600 underline"
                 >
                   sign in
                 </Link>{" "}
