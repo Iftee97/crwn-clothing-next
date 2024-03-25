@@ -2,12 +2,10 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useContext } from "react";
-import { useRouter } from "next/router";
 import { CartContext } from "@/context/CartContext";
 import { HiOutlinePlus, HiOutlineMinus } from "react-icons/hi";
 
-export default function SingleProduct({ product, blurDataUrl }) {
-  const router = useRouter();
+export default function SingleProduct({ product }) {
   const { addItemToCart, increaseQuantity, decreaseQuantity, setIsCartOpen } =
     useContext(CartContext);
   const [qty, setQty] = useState(1);
