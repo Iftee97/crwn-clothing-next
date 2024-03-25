@@ -5,7 +5,10 @@ export default function ProductCard({ categoryTitle, product }) {
   const { imageUrl, title, price } = product;
 
   return (
-    <Link href={`/shop/${categoryTitle}/${title}`}>
+    <Link
+      // href={`/shop/${categoryTitle}/${title}`}
+      href={`/products/${title}`}
+    >
       <div className="product-card-container w-full flex flex-col items-center h-[350px] relative mb-[28px]">
         <Image
           src={imageUrl}

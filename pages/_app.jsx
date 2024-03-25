@@ -31,7 +31,6 @@ export default function App({ Component, pageProps }) {
               <StripeProvider>
                 <ToastContainer position="bottom-center" theme="dark" />
                 <NextTopLoader showSpinner={false} color="#020617" />
-                {/* className={montserrat.className} */}
                 <Component {...pageProps} />
               </StripeProvider>
             </Layout>
