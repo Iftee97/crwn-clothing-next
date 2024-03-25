@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 export const AppContext = createContext();
 
-export default function AppContextProvider({ children }) {
+export function AppContextProvider({ children }) {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const router = useRouter();

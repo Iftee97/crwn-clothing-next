@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
 
-export default function AuthContextProvider({ children }) {
+export function AuthContextProvider({ children }) {
   const [isMounted, setIsMounted] = useState(false); // mounted state kept track of to remove weird hydration mismatch error
   const [user, setUser] = useLocalStorage("user", {});
   const router = useRouter();
