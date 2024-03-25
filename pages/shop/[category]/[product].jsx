@@ -5,8 +5,9 @@ import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { CartContext } from "@/context/CartContext";
 import { HiOutlinePlus, HiOutlineMinus } from "react-icons/hi";
+import getBase64 from "@/utils/getLocalBase64";
 
-export default function SingleProduct({ product }) {
+export default function SingleProduct({ product, blurDataUrl }) {
   const router = useRouter();
   const { addItemToCart, increaseQuantity, decreaseQuantity, setIsCartOpen } =
     useContext(CartContext);
@@ -76,6 +77,8 @@ export default function SingleProduct({ product }) {
                 alt={product.title}
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 fill={true}
+                placeholder="blur"
+                blurDataURL={blurDataUrl}
                 className="h-full w-full object-cover mx-auto"
               />
             </div>
@@ -129,9 +132,12 @@ export async function getStaticProps(context) {
   );
   const { product } = await res.json();
 
+  const blurDataUrl = await getBase64(product.imageUrl);
+
   return {
     props: {
       product,
+      blurDataUrl,
     },
   };
 }
