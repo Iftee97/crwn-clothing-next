@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 export default function PaymentForm() {
   const router = useRouter();
   const { user } = useContext(AuthContext);
-  const { cartItems, getCartTotal, clearCart } = useContext(CartContext);
+  const { cartItems, getCartTotal } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(false);
 
   const amount = getCartTotal();
@@ -40,8 +40,6 @@ export default function PaymentForm() {
       } else {
         const { redirectUrl } = await response.json();
         router.push(redirectUrl);
-        // clearCart();
-        // toast.success("Payment successful");
       }
     } catch (error) {
       console.log("error: >>>>>>", error);
