@@ -16,7 +16,7 @@ export default function SingleProductPage({ productTitle, product }) {
     useContext(CartContext);
   const [qty, setQty] = useState(1);
 
-  const productNotFound = !product;
+  const productNotFound = !product || !product?._id;
 
   function increaseQty() {
     setQty((prevQty) => prevQty + 1);
@@ -56,7 +56,7 @@ export default function SingleProductPage({ productTitle, product }) {
           </div>
         ) : (
           <div className="flex flex-col lg:flex-row items-start justify-between gap-10 mb-6">
-            <div className="relative aspect-square h-full max-h-[550px] w-full flex-1 overflow-hidden">
+            <div className="relative aspect-square h-full max-h-[550px] w-full flex-1 overflow-hidden bg-gray-50">
               <Image
                 src={product.imageUrl}
                 alt={product.title}
@@ -98,7 +98,7 @@ export default function SingleProductPage({ productTitle, product }) {
   );
 }
 
-// // generic getStaticPaths
+// // generic getStaticPaths, only use if the paths are not known
 // export async function getStaticPaths() {
 //   return {
 //     paths: [],
