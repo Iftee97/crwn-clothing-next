@@ -34,7 +34,7 @@ export default function CreateProduct({ categories }) {
           },
         }
       );
-      console.log("new product data: >>>>>>>>>", data);
+      // console.log("new product data: >>>>>>>>>", data);
       toast.success(data.message);
       router.push("/");
     } catch (error) {

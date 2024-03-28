@@ -53,7 +53,7 @@ export default function SignUp() {
                 "/api/users/sign-up",
                 values
               );
-              console.log("sign up data: >>>>>>>>>", data);
+              // console.log("sign up data: >>>>>>>>>", data);
               localStorage.setItem(
                 "loggedInUserData",
                 JSON.stringify({

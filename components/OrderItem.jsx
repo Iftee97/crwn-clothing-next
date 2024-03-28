@@ -1,5 +1,5 @@
-import React from "react";
 import { BsFillTrash3Fill } from "react-icons/bs";
+import { format } from "date-fns";
 
 export default function OrderItem({ order, deleteOrder }) {
   return (
@@ -26,6 +26,9 @@ export default function OrderItem({ order, deleteOrder }) {
           Total:{" "}
           <span className="text-blue-700 font-medium">${order.total}</span>
         </div>
+        <span className="text-sm font-medium">
+          order date: {format(new Date(order.createdAt), "dd/MM/yyyy")}
+        </span>
       </div>
       {deleteOrder && (
         <button onClick={() => deleteOrder(order._id)}>

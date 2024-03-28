@@ -46,7 +46,7 @@ export default function SignIn() {
                 "/api/users/sign-in",
                 values
               );
-              console.log("sign in data: >>>>>>>>>", data);
+              // console.log("sign in data: >>>>>>>>>", data);
               localStorage.setItem(
                 "loggedInUserData",
                 JSON.stringify({

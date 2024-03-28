@@ -15,7 +15,6 @@ export default function Checkout() {
 
   const router = useRouter();
   const { query } = router;
-  console.log("query: >>>>>>>", query);
 
   useEffect(() => {
     if (query.success) {
@@ -47,7 +46,6 @@ export default function Checkout() {
       console.log("data: >>>>>>>", data);
       toast.success("Order created successfully");
       clearCart();
-      console.log("response: >>>>>>>", response);
     } catch (error) {
       console.log("error: >>>>>>>", error);
       toast.error("Error creating order");

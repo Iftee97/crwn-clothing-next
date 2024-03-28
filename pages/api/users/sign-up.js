@@ -23,7 +23,7 @@ export default async function handler(req, res) {
       password: hashedPassword,
       isAdmin,
     });
-    console.log("user: >>>>>>>>", user);
+    // console.log("user: >>>>>>>>", user);
     if (user) {
       const token = generateToken(user._id);
       return res.status(201).json({

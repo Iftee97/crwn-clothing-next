@@ -77,8 +77,6 @@ export function CartContextProvider({ children }) {
     setCartItems([]);
   }
 
-  // console.log('cartItems: >>>>>>>>>', cartItems)
-
   if (!isMounted) {
     return null;
   }

@@ -40,7 +40,7 @@ export async function getServerSideProps(ctx) {
   let orders = [];
   try {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/orders/`,
+      `${process.env.NEXT_PUBLIC_API_URL}/orders/all-orders`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -48,9 +48,10 @@ export async function getServerSideProps(ctx) {
         },
       }
     );
+    // console.log("data: >>>>>>>>", data);
     orders = data;
   } catch (error) {
-    console.log("error: >>>>>>>>", error);
+    // console.log("error: >>>>>>>>", error);
     orders = [];
   }
 

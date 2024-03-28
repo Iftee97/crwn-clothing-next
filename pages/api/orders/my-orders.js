@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 export default async function handler(req, res) {
   const { authorization } = req.headers;
-  console.log({ authorization });
+  // console.log({ authorization });
   if (!authorization) {
     return res.status(401).json({ error: "Not Authorized" });
   }

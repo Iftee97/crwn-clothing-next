@@ -21,7 +21,7 @@ export default async function handler(req, res) {
   }
 
   const { items, total } = req.body;
-  console.log({ items, total });
+  // console.log({ items, total });
 
   const lineItems = items.map((item) => ({
     price_data: {
