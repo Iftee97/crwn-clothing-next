@@ -7,9 +7,10 @@ export default async function handler(req, res) {
   if (!authorization) {
     return res.status(401).json({ error: "Not Authorized" });
   }
+
   const token = authorization.split(" ")[1];
-  const decoded = jwt.verify(token, process.env.JWT_SECRET);
-  if (!decoded || !decoded.userId) {
+  const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+  if (!decodedToken || !decodedToken.userId) {
     return res.status(401).json({ error: "Invalid Token" });
   }
 
@@ -27,7 +28,7 @@ export default async function handler(req, res) {
     }
 
     const order = new Order({
-      user,
+      user: decodedToken.userId || user,
       items,
       total,
     });
