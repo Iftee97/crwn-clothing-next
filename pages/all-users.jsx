@@ -38,7 +38,7 @@ export async function getServerSideProps(ctx) {
   let users = [];
   try {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/users/`,
+      `${process.env.NEXT_PUBLIC_API_URL}/users/all-users`,
       {
         headers: {
           Authorization: `Bearer ${req.cookies.token}`,
