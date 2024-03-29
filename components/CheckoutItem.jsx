@@ -11,7 +11,7 @@ export default function CheckoutItem({ cartItem }) {
 
   return (
     <div className="w-full flex flex-col lg:flex-row items-center gap-4 text-[24px] lg:text-[20px] py-[15px] min-h-[100px] border-b border-gray-400 text-center lg:text-left font-light">
-      <div className="image-container relative aspect-square w-full md:w-[30%] lg:w-[30%]">
+      <div className="relative aspect-square w-full md:w-[30%] lg:w-[30%]">
         <Image
           src={imageUrl}
           alt={title}
@@ -20,12 +20,10 @@ export default function CheckoutItem({ cartItem }) {
           className="w-full h-auto object-cover"
         />
       </div>
-      <span className="name font-medium w-full md:w-[30%] lg:w-[30%]">
-        {title}
-      </span>
-      <span className="quantity w-full md:w-[30%] lg:w-[30%] flex items-center justify-center lg:justify-start gap-4 lg:gap-2">
+      <span className="font-medium w-full md:w-[30%] lg:w-[30%]">{title}</span>
+      <span className="w-full md:w-[30%] lg:w-[30%] flex items-center justify-center lg:justify-start gap-4 lg:gap-2">
         <div
-          className="arrow cursor-pointer"
+          className="cursor-pointer"
           onClick={() => decreaseQuantity(cartItem)}
         >
           <HiOutlineMinusSm />
@@ -34,7 +32,7 @@ export default function CheckoutItem({ cartItem }) {
           {quantity}
         </span>
         <div
-          className="arrow cursor-pointer"
+          className="cursor-pointer"
           onClick={() => increaseQuantity(cartItem)}
         >
           <HiOutlinePlusSm />
@@ -53,7 +51,7 @@ export default function CheckoutItem({ cartItem }) {
         </div>
         {/* mobile screens */}
         <div
-          className="block lg:hidden remove-button cursor-pointer text-red-500 text-[18px] mt-2"
+          className="block lg:hidden remove-button cursor-pointer text-red-500 text-lg mt-2"
           onClick={() => removeItemFromCart(cartItem)}
         >
           &#10005; remove item

@@ -10,7 +10,7 @@ export default function Home({ categories }) {
       </Head>
 
       <main>
-        <div className="category-container w-full grid grid-cols-1 gap-4 md:grid-cols-2 lg:flex lg:gap-0 flex-wrap justify-between">
+        <div className="w-full grid grid-cols-1 gap-4 md:grid-cols-2 lg:flex lg:gap-0 flex-wrap justify-between">
           {categories.map((category) => (
             <CategoryItem key={category._id} category={category} />
           ))}

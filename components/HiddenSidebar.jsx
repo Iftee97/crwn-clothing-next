@@ -24,7 +24,7 @@ export default function HiddenSidebar() {
     >
       <div className="block overflow-auto bg-[#fff] h-full">
         <div className="flex items-center justify-between p-[18px] shadow-md">
-          <Link href="/" className="logo-container" onClick={toggleSidebar}>
+          <Link href="/" onClick={toggleSidebar}>
             <Image
               src="/crwn.svg"
               alt="logo"

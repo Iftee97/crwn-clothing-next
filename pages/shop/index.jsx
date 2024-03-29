@@ -9,7 +9,7 @@ export default function Shop({ categories }) {
         <title>Shop | Crwn Clothing</title>
       </Head>
 
-      <div className="shop-container flex flex-col">
+      <div className="flex flex-col gap-6">
         {categories.map((category) => (
           <CategoryPreview key={category._id} category={category} />
         ))}

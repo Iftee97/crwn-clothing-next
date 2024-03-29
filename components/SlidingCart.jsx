@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Fragment, useContext } from "react";
 import { CartContext } from "@/context/CartContext";
 import { Dialog, Transition } from "@headlessui/react";
@@ -77,10 +78,12 @@ export default function SlidingCart() {
                               >
                                 <div className="top-0 left-0 right-0 z-50 w-full h-full absolute hidden" />
                                 <div className="relative flex-shrink-0 w-24 h-24 overflow-hidden border border-gray-200 rounded-md">
-                                  <img
+                                  <Image
                                     src={product.imageUrl}
                                     alt={product.title}
-                                    className="w-full h-full"
+                                    width={100}
+                                    height={100}
+                                    className="w-full h-full object-cover"
                                   />
                                 </div>
                                 <div className="flex flex-col flex-1 ml-4">

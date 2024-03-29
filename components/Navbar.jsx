@@ -19,8 +19,8 @@ export default function Navbar() {
     useContext(CartContext);
 
   return (
-    <nav className="navigation bg-white shadow-md h-[70px] w-full flex justify-between items-center p-[18px] md:p-[24px]">
-      <Link href="/" className="logo-container">
+    <nav className="bg-white shadow-md h-[70px] w-full flex justify-between items-center p-[18px] md:p-[24px]">
+      <Link href="/">
         <Image
           src="/crwn.svg"
           alt="logo"
@@ -33,10 +33,10 @@ export default function Navbar() {
           }}
         />
       </Link>
-      <div className="nav-links-container h-full hidden md:flex items-center gap-6 font-normal">
+      <div className="h-full hidden md:flex items-center gap-6 font-normal">
         <Link
           href="/"
-          className={`nav-link cursor-pointer py-1 px-2 rounded  
+          className={`cursor-pointer py-1 px-2 rounded  
             ${router.pathname === "/" && "bg-gray-800 text-white"}
           `}
         >
@@ -44,7 +44,7 @@ export default function Navbar() {
         </Link>
         <Link
           href="/shop"
-          className={`nav-link cursor-pointer py-1 px-2 rounded  
+          className={`cursor-pointer py-1 px-2 rounded  
             ${router.pathname === "/shop" && "bg-gray-800 text-white"}
           `}
         >
@@ -63,7 +63,7 @@ export default function Navbar() {
         ) : (
           <Link
             href="/sign-in"
-            className={`nav-link cursor-pointer py-1 px-2 rounded 
+            className={`cursor-pointer py-1 px-2 rounded 
               ${router.pathname === "/sign-in" && "bg-gray-800 text-white"}
             `}
           >
@@ -74,7 +74,7 @@ export default function Navbar() {
       <div className="flex items-center gap-3">
         <>
           <button
-            className="cart-icon cursor-pointer flex items-center gap-1 lg:gap-2 hover:bg-gray-800 hover:text-white py-1 px-2 rounded"
+            className="cursor-pointer flex items-center gap-1 lg:gap-2 hover:bg-gray-800 hover:text-white py-1 px-2 rounded"
             onClick={() => setIsCartOpen(!isCartOpen)}
           >
             <HiOutlineShoppingBag className="text-2xl" />
