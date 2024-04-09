@@ -1,6 +1,5 @@
 import Head from "next/head";
 import CategoryItem from "@/components/CategoryItem";
-// import getBase64 from "@/utils/getLocalBase64";
 
 export default function Home({ categories }) {
   return (
@@ -10,8 +9,7 @@ export default function Home({ categories }) {
       </Head>
 
       <main>
-        {/* w-full flex flex-wrap justify-between */}
-        <div className="w-full grid grid-cols-1 gap-4 md:grid-cols-2 lg:flex lg:gap-0 flex-wrap justify-between">
+        <div className="w-full flex flex-wrap justify-between gap-4 lg:gap-0">
           {categories.map((category) => (
             <CategoryItem key={category._id} category={category} />
           ))}
@@ -24,15 +22,9 @@ export default function Home({ categories }) {
 // SSR: getServerSideProps | SSG: getStaticProps
 export async function getStaticProps() {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/categories/get-categories-only`
+    `${process.env.NEXT_PUBLIC_API_URL}/categories/get-categories-only`,
   );
   const { categories } = await response.json();
-
-  // // Iterate through categories and add blurDataURL property
-  // for (const category of categories) {
-  //   const blurDataURL = await getBase64(category.imageUrl);
-  //   category.blurDataURL = blurDataURL;
-  // }
 
   return {
     props: {
