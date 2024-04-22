@@ -1,22 +1,35 @@
 import Head from "next/head";
 import Link from "next/link";
-import Image from "next/image";
 
-// SSR: getServerSideProps | SSG: getStaticProps
-export async function getStaticProps() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/categories/get-categories-only`
-  );
-  const { categories } = await response.json();
+const categories = [
+  {
+    id: 1,
+    title: "Hats",
+    imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
+  },
+  {
+    id: 2,
+    title: "Jackets",
+    imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
+  },
+  {
+    id: 3,
+    title: "Sneakers",
+    imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
+  },
+  {
+    id: 4,
+    title: "Womens",
+    imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
+  },
+  {
+    id: 5,
+    title: "Mens",
+    imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
+  },
+];
 
-  return {
-    props: {
-      categories,
-    },
-  };
-}
-
-export default function Home({ categories }) {
+export default function Home() {
   return (
     <>
       <Head>
@@ -24,14 +37,9 @@ export default function Home({ categories }) {
       </Head>
 
       <main>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
-          {categories.slice(0, 3).map((category) => (
-            <CategoryItem key={category._id} category={category} />
-          ))}
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {categories.slice(3, 5).map((category) => (
-            <CategoryItem key={category._id} category={category} />
+        <div className="w-full flex flex-wrap justify-between gap-4">
+          {categories.map((category) => (
+            <CategoryItem key={category.id} category={category} />
           ))}
         </div>
       </main>
@@ -42,22 +50,18 @@ export default function Home({ categories }) {
 function CategoryItem({ category }) {
   return (
     <Link
-      key={category._id}
       href={`/shop/${category.title}`}
-      className="h-60 flex items-center justify-center border border-black overflow-hidden"
+      className="min-w-[30%] h-[240px] flex flex-auto items-center justify-center border border-black overflow-hidden hover:cursor-pointer relative"
     >
-      <Image
-        src={category.imageUrl}
-        alt={category.title}
-        width={500}
-        height={500}
-        className="w-full h-full object-cover hover:transition-transform hover:delay-0 hover:ease-[custom-cubic] hover:scale-110 hover:duration-[3500ms] hover:opacity-90"
+      <div
+        className="w-[100%] h-[100%] bg-cover bg-center over:transition-transform hover:delay-0 hover:ease-[cubic-bezier(0.25, 0.45, 0.45, 0.95)] hover:scale-110 hover:duration-[3500ms] hover:opacity-90"
+        style={{ backgroundImage: `url(${category.imageUrl})` }}
       />
       <div className="h-[72px] p-[18px] flex flex-col items-center justify-center absolute border border-black bg-white opacity-70 group-hover:opacity-90">
         <h2 className="font-medium mb-1 text-lg text-gray-700">
           {category.title}
         </h2>
-        <p className="font-light text-base">Shop Now</p>
+        <p className="font-light text-base text-center">Shop Now</p>
       </div>
     </Link>
   );
