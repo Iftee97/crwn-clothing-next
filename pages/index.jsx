@@ -51,7 +51,7 @@ function CategoryItem({ category }) {
   return (
     <Link
       href={`/shop/${category.title}`}
-      className="min-w-[30%] h-[240px] flex flex-auto items-center justify-center border border-black overflow-hidden hover:cursor-pointer relative"
+      className="min-w-full lg:min-w-[30%] h-[240px] flex flex-auto items-center justify-center border border-black overflow-hidden hover:cursor-pointer relative"
     >
       <div
         className="w-[100%] h-[100%] bg-cover bg-center over:transition-transform hover:delay-0 hover:ease-[cubic-bezier(0.25, 0.45, 0.45, 0.95)] hover:scale-110 hover:duration-[3500ms] hover:opacity-90"
