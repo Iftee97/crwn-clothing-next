@@ -29,7 +29,7 @@ export default function Shop({ categories }) {
 
 export async function getStaticProps() {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/categories/get-categories-with-items`,
+    `${process.env.NEXT_PUBLIC_API_URL}/categories/get-categories-with-items`
   );
   const { categories } = await response.json();
 

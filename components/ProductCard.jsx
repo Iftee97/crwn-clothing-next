@@ -5,8 +5,8 @@ export default function ProductCard({ product }) {
   const { imageUrl, title, price } = product;
 
   return (
-    <Link href={`/products/${title}`}>
-      <div className="w-full flex flex-col items-center h-[350px] relative mb-[28px]">
+    <Link href={`/products/${title}`} className="flex flex-col gap-2">
+      <div className="w-full h-[350px] bg-gray-50 relative">
         <Image
           src={imageUrl}
           alt={title}
@@ -14,10 +14,10 @@ export default function ProductCard({ product }) {
           height={500}
           className="w-full h-full object-cover mb-[6px] hover:opacity-80"
         />
-        <div className="w-full h-[5%] flex justify-between text-[18px]">
-          <span>{title}</span>
-          <span>${price}</span>
-        </div>
+      </div>
+      <div className="w-full h-[5%] flex justify-between text-[18px]">
+        <span>{title}</span>
+        <span>${price}</span>
       </div>
     </Link>
   );
