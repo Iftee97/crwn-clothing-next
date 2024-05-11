@@ -6,7 +6,7 @@ export default function ProductCard({ product }) {
 
   return (
     <Link href={`/products/${title}`} className="flex flex-col gap-2">
-      <div className="w-full h-[350px] bg-gray-50 animate-pulse relative">
+      <div className="w-full h-[350px] bg-gray-50 relative">
         <Image
           src={imageUrl}
           alt={title}
