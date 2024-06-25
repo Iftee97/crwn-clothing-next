@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState, useContext } from "react";
 import { CartContext } from "@/context/CartContext";
-import { HiOutlinePlus, HiOutlineMinus } from "react-icons/hi";
+import { HiOutlinePlus, HiOutlineMinus, HiChevronLeft } from "react-icons/hi";
 
 export default function SingleProductPage({ productTitle, product }) {
   const router = useRouter();
@@ -89,6 +89,13 @@ export default function SingleProductPage({ productTitle, product }) {
                 onClick={addToCartHandler}
               >
                 Add to cart
+              </button>
+              <button
+                className="text-sm hover:underline"
+                onClick={() => router.back()}
+              >
+                <HiChevronLeft className="inline mr-1" />
+                go back
               </button>
             </div>
           </div>
