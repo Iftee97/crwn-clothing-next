@@ -66,7 +66,7 @@ export default function Checkout() {
               <div className="header-block w-[30%]">
                 <span>Image</span>
               </div>
-              <div className="header-block w-[30%]">
+              <div className="header-block text-center w-[30%]">
                 <span>Title</span>
               </div>
               <div className="header-block w-[30%]">
