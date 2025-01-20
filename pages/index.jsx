@@ -100,7 +100,7 @@ function CategoryItemShell({ title, children }) {
   return (
     <Link
       href={`/shop/${title}`}
-      className="min-w-full lg:min-w-[30%] h-[240px] flex flex-auto items-center justify-center border border-black overflow-hidden hover:cursor-pointer relative"
+      className="min-w-full lg:min-w-[30%] h-[240px] flex flex-auto items-center justify-center border border-black overflow-hidden hover:cursor-pointer relative aspect-[4/3]"
     >
       <Fragment>{children}</Fragment>
       <div className="h-[72px] p-[18px] flex flex-col items-center justify-center absolute border border-black bg-white opacity-70 group-hover:opacity-90">
