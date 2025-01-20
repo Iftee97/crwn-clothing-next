@@ -79,7 +79,7 @@ function CategoryItemUsingNextImage({ category, usePublicImage }) {
         height={300}
         placeholder={usePublicImage ? "blur" : "empty"}
         // className="hover:transition-transform hover:delay-0 hover:ease-[cubic-bezier(0.25, 0.45, 0.45, 0.95)] hover:scale-110 hover:duration-[3500ms] hover:opacity-90 w-full h-full lg:h-auto"
-        className="w-full h-full lg:h-auto hover:opacity-90" // without shitty animation
+        className="w-full h-full lg:h-auto hover:opacity-90" // without shitty hover animation
       />
     </CategoryItemShell>
   );
