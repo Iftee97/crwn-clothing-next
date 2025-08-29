@@ -30,8 +30,7 @@ export default function App({ Component, pageProps }) {
           <CartContextProvider>
             <Layout>
               <StripeProvider>
-                <ToastContainer position="bottom-center" theme="dark" />
-                <NextTopLoader showSpinner={false} color="#020617" easing="linear" initialPosition={0.3} speed={500} crawlSpeed={200} />
+                <ToasterAndTopLoaderProvider />
                 <Component {...pageProps} />
               </StripeProvider>
             </Layout>
@@ -49,5 +48,14 @@ function StyleBlock() {
         font-family: ${montserrat.style.fontFamily};
       }
     `}</style>
+  );
+}
+
+function ToasterAndTopLoaderProvider() {
+  return (
+    <>
+      <ToastContainer position="bottom-center" theme="dark" />
+      <NextTopLoader showSpinner={false} color="#020617" easing="linear" initialPosition={0.3} speed={500} crawlSpeed={200} />
+    </>
   );
 }
