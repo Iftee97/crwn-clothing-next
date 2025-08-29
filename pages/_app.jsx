@@ -55,7 +55,14 @@ function ToasterAndTopLoaderProvider() {
   return (
     <>
       <ToastContainer position="bottom-center" theme="dark" />
-      <NextTopLoader showSpinner={false} color="#020617" easing="linear" initialPosition={0.3} speed={500} crawlSpeed={200} />
+      <NextTopLoader 
+        showSpinner={false} 
+        color="#020617" 
+        easing="linear" // ease (default) | ease-in | ease-out | ease-in-out | 
+        initialPosition={0.3} 
+        speed={500} 
+        crawlSpeed={200} 
+      />
     </>
   );
 }
