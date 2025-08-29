@@ -18,11 +18,12 @@ const montserrat = Montserrat({
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <style jsx global>{`
+      {/* <style jsx global>{`
         html {
           font-family: ${montserrat.style.fontFamily};
         }
-      `}</style>
+      `}</style> */}
+      <StyleBlock />
 
       <AppContextProvider>
         <AuthContextProvider>
@@ -30,7 +31,7 @@ export default function App({ Component, pageProps }) {
             <Layout>
               <StripeProvider>
                 <ToastContainer position="bottom-center" theme="dark" />
-                <NextTopLoader showSpinner={false} color="#020617" />
+                <NextTopLoader showSpinner={false} color="#020617" easing="linear" initialPosition={0.3} speed={500} crawlSpeed={200} />
                 <Component {...pageProps} />
               </StripeProvider>
             </Layout>
@@ -38,5 +39,15 @@ export default function App({ Component, pageProps }) {
         </AuthContextProvider>
       </AppContextProvider>
     </>
+  );
+}
+
+function StyleBlock() {
+  return (
+    <style jsx global>{`
+      html {
+        font-family: ${montserrat.style.fontFamily};
+      }
+    `}</style>
   );
 }
